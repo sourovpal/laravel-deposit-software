@@ -17,12 +17,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">Datatable</h4>
+                        <h4 class="page-title">All Admins</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb p-0 m-0">
-                                <li class="breadcrumb-item"><a href="#">Moltran</a></li>
-                                <li class="breadcrumb-item"><a href="#">table</a></li>
-                                <li class="breadcrumb-item active">Datatable</li>
+                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Admins</li>
                             </ol>
                         </div>
                         <div class="clearfix"></div>
@@ -34,8 +33,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Default Example</h3>
+                        <div class="card-header py-2 d-flex justify-content-between align-items-center">
+                            <h3 class="card-title">View List</h3>
+                            <div class="">
+                                <a class="btn btn-primary btn-sm" href="{{ route('dashboard.admin.create') }}"><i class="fa fa-plus mr-2"></i> Add New</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -43,40 +45,41 @@
                                     <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                             <tr>
+                                                <th>Avatar</th>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
+                                            @foreach($admins as $row)
                                             <tr>
-                                                <td>Shad Decker</td>
-                                                <td>Regional Director</td>
-                                                <td>Edinburgh</td>
-                                                <td>51</td>
-                                                <td>2008/11/13</td>
-                                                <td>$183,000</td>
+                                                <td>
+                                                    @if($row->avatar != '')
+                                                    <img width="40" class="img-thumbnail" src="{{ asset('/profile/'. $row->avatar) }}" alt="">
+                                                    @else
+                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
+                                                    @endif
+                                                </td>
+                                                <td>{{ $row->name }}</td>
+                                                <td>{{ $row->email }}</td>
+                                                <td>{{ $row->phone }}</td>
+                                                <td>
+                                                    @if($row->status == 1)
+                                                    <span class="badge badge-success">Active</span>
+                                                    @else
+                                                    <span class="badge badge-danger">Inactive</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-warning" href="{{ route('dashboard.admin.edit', $row->id) }}">Edit</a>
+                                                    <a class="btn btn-sm btn-danger" href="{{ route('dashboard.admin.destroy', $row->id) }}">Delete</a>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>Michael Bruce</td>
-                                                <td>Javascript Developer</td>
-                                                <td>Singapore</td>
-                                                <td>29</td>
-                                                <td>2011/06/27</td>
-                                                <td>$183,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>New York</td>
-                                                <td>27</td>
-                                                <td>2011/01/25</td>
-                                                <td>$112,000</td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
 

@@ -6,7 +6,7 @@
 <!-- Mirrored from coderthemes.com/moltran/layouts/blue-vertical/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Nov 2023 07:47:10 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Login Page | Moltran - Responsive Bootstrap 4 Admin Dashboard</title>
+        <title>Login In to Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Responsive bootstrap 4 admin template" name="description" />
         <meta content="Coderthemes" name="author" />
@@ -30,7 +30,7 @@
                         <div class="card mt-4">
                             <div class="card-header bg-img p-5 position-relative">
                                 <div class="bg-overlay"></div>
-                                <h4 class="text-white text-center mb-0">Sign In to Moltran</h4>
+                                <h4 class="text-white text-center mb-0">Sign In to Dashboard</h4>
                             </div>
                             <div class="card-body p-4 mt-2">
                                 <form action="#" class="p-3">
@@ -55,11 +55,8 @@
                                     </div>
 
                                     <div class="form-group row mb-0">
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-7 mx-auto">
                                             <a href="pages-recoverpw.html"><i class="fa fa-lock mr-1"></i> Forgot your password?</a>
-                                        </div>
-                                        <div class="col-sm-5 text-right">
-                                            <a href="pages-register.html">Create an account</a>
                                         </div>
                                     </div>
                                 </form>
