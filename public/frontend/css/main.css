@@ -1,0 +1,538 @@
+@import url('https://fonts.cdnfonts.com/css/gosha-sans');    
+
+:root {
+    --primary: #00FF62;
+    --secondary: #121216;
+}
+
+/* ********************************** HOME PAGE ********************************************** */
+
+/* Main  */
+main{
+    background: #0914D0;
+    padding: 1rem 0;
+}
+
+/* Header Profile  */
+#header-profile .header-profile-img img{
+    border-radius: 50%;
+    margin-right: 20px;
+}
+#header-profile hr.profile-content-hr{
+    border: .8px solid white !important;
+    margin: 0px !important;
+}
+#header-profile .header-profile-content p{
+    color: white;
+    margin: 2px 0px !important;
+    font-size: 14px;
+}
+
+/* Slider  */
+#product-slider{
+    padding: 20px 0;
+}
+#product-slider img{
+    height: 180px;
+}
+@media only screen and (max-width: 500px) {
+    #product-slider img{
+        height: 65px;
+    }
+}
+
+/* Home Options  */
+#home-options{
+    padding: 40px 0;
+    text-align: center;
+}
+.home-option-content{
+    margin: 15px 0;
+}
+.home-option-content .home-option-icon img{
+    border: 5px solid #5BB4F6;
+    background: var(--primary);
+    padding: 15px 26px;
+    height: 100px !important;
+    text-align: center;
+    border-radius: 10px;
+}
+.home-option-content h6{
+    margin-top: 5px;
+    font-weight: normal;
+    color: white;
+}
+@media only screen and (max-width: 500px) {
+    .home-option-content .home-option-icon img{
+        padding: 10px;
+        height: 80px !important;
+    }
+    .home-option-content h6{
+        text-align: center;
+    }
+}
+
+/* Brand Slider  */
+#brand-slider{
+    padding: 20px 0 5px 0px;
+    margin-bottom: 80px;
+    background: var(--primary);
+}
+#brand-slider img{
+    height: 160px;
+}
+@media only screen and (max-width: 500px) {
+    #brand-slider img{
+        height: 45px;
+    }
+    #brand-slider{
+        margin-bottom: 0px;
+    }
+}
+
+/* Bottom Navbar  */
+#bottom-navbar{
+    background: var(--secondary);
+    position: fixed;
+    bottom: 0;
+    height: 60px; 
+    width: 100%;
+    display: flex;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 9999;
+}
+.bottom-navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+}
+.bottom-navbar .bottom-navbar-icon span{
+    font-size: 40px !important;
+    color: white;
+}
+.bottom-navbar .start span{
+    font-size: 60px !important;
+    margin-top: -20px;
+    border: 10px solid #262626f5;
+    border-radius: 50%;
+}
+
+
+/* ********************************** LOGIN PAGE ********************************************** */
+#login-bg{
+    background: var(--secondary);
+    padding: 0px !important;
+}
+/* Login Header */
+.login-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-header .login-header-text{
+    color: white;
+    margin-left: 20px;
+}
+.login-header .login-header-text h1{
+    font-size: 50px;
+}
+@media only screen and (max-width: 500px) {
+    .login-header .login-header-logo img{
+        height: 80px;
+    }
+    .login-header .login-header-text h1{
+        font-size: 28px;
+    }
+}
+
+
+/* Login Brand  */
+#login-brand-slider{
+    padding: 20px 0 5px 0px;
+    margin-bottom: 80px;
+}
+#login-brand-slider img{
+    height: 180px;
+}
+@media only screen and (max-width: 500px) {
+    #login-brand-slider img{
+        height: 65px;
+    }
+    #login-brand-slider{
+        margin-bottom: 0px;
+    }
+}
+
+/* Login Form */
+.login-content .register-button{
+    text-align: right;
+}
+.login-content .register-button a{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 30px;
+    box-shadow: orange -50px 4px 0 0;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 24px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.login-content form{
+    margin-top: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.login-content form input{
+    padding: 15px 20px;
+    width: 100%;
+    border-radius: 30px;
+    border: none;
+    margin-bottom: 12px;
+}
+.login-content form .login-button button {
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 30px;
+    box-shadow: orange -50px 4px 0 0;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 24px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.login-content .login-forget{
+    color: white;
+    font-weight: bold;
+    text-decoration: underline !important;
+}
+
+/* Login Footer Brand */
+#login-brand{
+    margin-top: 25px;
+    background: var(--primary);
+    padding: 15px 0;
+}
+#login-brand img{
+    width: 80%;
+}
+@media only screen and (max-width: 500px) {
+    #login-brand img{
+        width: 100%;
+    }
+}
+
+/* Login Footer */
+#login-footer{
+    background: white;
+}
+#login-footer .login-footer-nav{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0px !important;
+}
+#login-footer .login-footer-nav > li {
+    margin: 0px 6px;
+}
+#login-footer .login-footer-nav li a{
+    color: var(--secondary);
+}
+#login-footer p{
+    text-align: center;
+    color: #007bff;
+}
+
+/* ********************************** START PAGE ********************************************** */
+
+/* Balance Info */
+#balance-info{
+    width: 80%;
+    margin: auto;
+}
+.balance-info-content{
+    border: 5px solid var(--primary);
+    background: white;
+    padding: 15px 26px;
+    text-align: center;
+    border-radius: 10px;
+}
+.balance-info-content h6{
+    color: var(--secondary);
+}
+.balance-info-content p{
+    color: var(--secondary);
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+@media only screen and (max-width: 500px) {
+    #balance-info{
+        width: 100%;
+    }
+    .balance-info-content{
+        border: 3px solid var(--primary);
+        padding: 5px 0px !important;
+        height: auto !important;
+    }
+    .balance-info-content h6{
+        font-size: 13px;
+    }
+    .balance-info-content p{
+        font-size: 12px;
+    }
+}
+
+/* Bit Product  */
+#bit-product{
+    width: 70%;
+    margin: 25px auto;
+}
+#bit-product .bit-product-button button{
+    background: #30C064;
+    width: 100%;
+    padding: 8px 0px;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    font-size: 22px;
+}
+#bit-product .bit-product-img img{
+    border-radius: 50%;
+    float: right;
+}
+#bit-product .bit-product-img p{
+    float: right;
+    margin-bottom: 45px;
+    margin-top: 35px;
+    font-size: 30px;
+    color: white;
+}
+@media only screen and (max-width: 500px) {
+    #bit-product{
+        width: 100%;
+        margin: 10px 0px 80px 0px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    #bit-product{
+        width: 100%;
+        margin: 10px 0px 80px 0px;
+    }
+}
+/* ********************************** PROFILE/ABOUT PAGE ********************************************** */
+#profile-page{
+    background: var(--secondary);
+    overflow-x: hidden;
+    padding: 10px 0px 0px 0px !important;
+}
+#profile-header a{
+    background: #ccc;
+    color: black;
+    padding: 2px 5px;
+}
+#profile-header .profile-header-info{
+    background: #FFFFFF;
+    text-align: center;
+    border-radius: 20px;
+    margin: 20px 0px;
+}
+#profile-header .profile-header-info img{
+    border-radius: 50%;
+    margin-top: -20px;
+}
+#profile-header .profile-header-info h4{
+    margin: 0px;
+}
+#profile-header .profile-header-info p{
+    margin: 0px;
+}
+#profile-header .profile-header-info span{
+    color: #5569ED; 
+}
+#profile-header .profile-header-info .profile-info-content{
+    margin: 15px 0;
+}
+#profile-header .profile-header-info .profile-info-content h1{
+    font-weight: bold;
+    font-size: 36px;
+    margin: 0px;
+}
+#profile-header .profile-header-info .profile-info-content p{
+    color: #5569ED;
+    margin: 0px;
+}
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    border-radius: 15px;
+    height: 14px;
+    background: #00FF62;
+    border: 1px solid black;
+}
+
+/* Thumb: webkit */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 15px;
+    width: 15px;
+    background-color: #00FF62;
+    border-radius: 50%;
+    border: none;
+    transition: .2s ease-in-out;
+}
+input[type="range"]::-moz-range-thumb {
+    height: 12px;
+    width: 12px;
+    background-color: #00FF62;
+    border-radius: 50%;
+    border: none;
+    transition: .2s ease-in-out;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 0 10px rgba(255, 85, 0, .1)
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+    box-shadow: 0 0 0 13px rgba(255, 85, 0, .2)
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 0 13px rgba(255, 85, 0, .2)
+}
+
+/* Hover, active & focus Thumb: Firfox */
+
+input[type="range"]::-moz-range-thumb:hover {
+    box-shadow: 0 0 0 10px rgba(255, 85, 0, .1)
+}
+
+input[type="range"]:active::-moz-range-thumb {
+    box-shadow: 0 0 0 13px rgba(255, 85, 0, .2)
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+    box-shadow: 0 0 0 13px rgba(255, 85, 0, .2)
+}
+.wrapper {
+    color: #4b4949;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.range {
+    display: flex;
+    align-items: center;
+    max-width: 450px;
+    margin: 0 auto;
+    width: 80%;
+    background: transparent;
+    padding: 0px 10px;
+}
+
+.value {
+    font-size: 18px;
+    text-align: center;
+    background: #00FF62;
+    color: #fff;
+    border-radius: 20px;
+    padding: 1px 4px;
+}
+
+#profile-transaction{
+    background: #FFFFFF;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    margin: 20px 0px 0px 0px;
+    padding: 15px 0;
+}
+#profile-transaction ul{
+    list-style-type: none;
+    padding: 0px 10px;
+}
+#profile-transaction ul li{
+    padding: 20px 0;
+    border-bottom: 2px solid #a5a5a8;
+}
+#profile-transaction ul li a{
+    color: var(--secondary);
+}
+
+.profile-important-note{
+    border-top: 2px solid var(--primary);
+    margin: 20px 10px;
+}
+.profile-important-note h5{
+    font-weight: bold;
+    margin-top: 10px;
+}
+.profile-important-note p{
+    font-size: 13px;
+    color: #48484a;
+}
+@media only screen and (max-width: 800px) {
+    #profile-header .profile-header-info .profile-info-content h1{
+        font-size: 20px;
+    }
+    #profile-header .profile-header-info .profile-info-content p{
+        font-size: 12px;
+    }
+    .profile-important-note p{
+        font-size: 12px;
+        color: #48484a;
+    }
+}
+/* ********************************** FAQ PAGE ********************************************** */
+.faq-content h5{
+    font-size: 20px;
+    font-weight: bold;
+}
+.faq-content p{
+    font-size: 14px;
+    color: #808080;
+}
+/* ********************************** ABOUT PAGE ********************************************** */
+#about-us{
+    padding: 40px 0;
+}
+.about-content{
+    background: white;
+    border-radius: 10px;
+    padding: 15px 20px;
+}
+.about-content h4{
+    color: #5569ED;
+}
+.about-content h3{
+    font-size: 40px;
+}
+.about-content img{
+    height: 100px;
+    margin-bottom: 15px;
+}
+.about-content p{
+    font-size: 20px;
+    color: #808080;
+}

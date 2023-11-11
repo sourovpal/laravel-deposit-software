@@ -13,6 +13,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::controller('AuthController')->group(function(){
+    Route::get('/register', 'register')->name('register');
+    Route::post('/register', 'registerSubmit')->name('register.submit');
+
+    Route::get('/login', 'login')->name('login');
+    Route::post('/login', 'loginSubmit')->name('login.submit');
+    
+    Route::get('/logout', 'logout')->name('logout');
+});
+
+Route::middleware(['auth'])->controller('AccountController')->group(function(){
+
+    Route::get('/', 'home')->name('home');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/profile', 'profile')->name('profile');
+    Route::get('/start', 'start')->name('start');
+    Route::get('/deposit', 'deposit')->name('deposit');
+
+});
+
+
+
+
+
 Route::prefix('/dashboard')->as('dashboard.')->group(function(){
 
     Route::controller('Admin\AdminAuthController')->group(function(){
