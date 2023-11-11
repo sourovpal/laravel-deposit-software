@@ -40,6 +40,7 @@ class AdminController extends Controller
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
         $data['password'] = bcrypt($request->password);
+        $data['status'] = 1;
         try{
             Admin::create($data);
             return back()->withSuccess('Created Successful.');
@@ -64,7 +65,7 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required|unique:admins,email,'.$edit->id,
             'phone' => 'required',
-            'password' => 'required',
+            'password' => 'nullabel',
             'avatar' => 'nullable|image|mimes:png,jpg,jpeg,webp',
         ]);
 
@@ -82,7 +83,7 @@ class AdminController extends Controller
         $data['phone'] = $request->phone;
 
         try{
-            Admin::create($data);
+            $edit->update($data);
             return back()->withSuccess('Updated Successful.');
             
         }catch(\Exception $e){

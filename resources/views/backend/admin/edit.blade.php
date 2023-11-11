@@ -18,9 +18,8 @@
                         <h4 class="page-title">General elements</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb p-0 m-0">
-                                <li class="breadcrumb-item"><a href="#">Moltran</a></li>
-                                <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                                <li class="breadcrumb-item active">General elements</li>
+                                <li class="breadcrumb-item"><a href="#">Admins</a></li>
+                                <li class="breadcrumb-item active">Edit</li>
                             </ol>
                         </div>
                         <div class="clearfix"></div>

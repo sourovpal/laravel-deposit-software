@@ -18,7 +18,13 @@
         <link href="{{ asset('backend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
         <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
-
+        <style>
+            .form-error{
+                font-size:12px;
+                padding:6px 0px;
+                color:#ff0058;
+            }
+        </style>
     </head>
 
     <body class="authentication-page">
@@ -33,14 +39,17 @@
                                 <h4 class="text-white text-center mb-0">Sign In to Dashboard</h4>
                             </div>
                             <div class="card-body p-4 mt-2">
-                                <form action="#" class="p-3">
+                                <form method="post" action="" class="p-3">
+                                    @csrf
 
                                     <div class="form-group mb-3">
-                                        <input class="form-control" type="email" required="" placeholder="Username">
+                                        <input class="form-control" name="email" type="email" required=""  placeholder="Email">
+                                        @error('email') <span class="d-block form-error">{{ $message }}</span> @enderror
                                     </div>
-
+                                    
                                     <div class="form-group mb-3">
-                                        <input class="form-control" type="password" required="" placeholder="Password">
+                                        <input class="form-control" name="password" type="password" required="" placeholder="Password">
+                                        @error('password') <span class="d-block form-error">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="form-group mb-3">

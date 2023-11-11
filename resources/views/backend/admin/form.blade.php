@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label>Phone</label>
-                        <input type="text" name="phone" class="form-control" placeholder="Enter phone number" value="{{ old('name', isset($edit)?$edit->phone:'') }}">
+                        <input type="text" name="phone" class="form-control" placeholder="Enter phone number" value="{{ old('phone', isset($edit)?$edit->phone:'') }}">
                         @error('phone')<span class="d-block form-error">{{ $message }}</span>@enderror
                     </div>
                     @if(!isset($edit))

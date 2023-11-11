@@ -38,7 +38,7 @@
                 <div class="dropdown-divider"></div>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a onclick="return confirm('Are you sure? You want to logout of this account.')" href="{{ route('dashboard.logout') }}" class="dropdown-item notify-item">
                     <i class="mdi mdi-power-settings"></i>
                     <span>Logout</span>
                 </a>
