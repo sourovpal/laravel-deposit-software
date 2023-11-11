@@ -93,12 +93,14 @@
             </div>
           </div>
           <div class="col-4">
-            <div class="home-option-content">
-              <div class="home-option-icon">
-                <img src="{{ asset('/frontend/images/home_option_icon/deposit.png') }}" alt="Home Option Menus">
+            <a href="{{ route('deposit') }}">
+              <div class="home-option-content">
+                <div class="home-option-icon">
+                  <img src="{{ asset('/frontend/images/home_option_icon/deposit.png') }}" alt="Home Option Menus">
+                </div>
+                <h6>Deposit</h6>
               </div>
-              <h6>Deposit</h6>
-            </div>
+            </a>
           </div>
           <div class="col-4">
             <div class="home-option-content">

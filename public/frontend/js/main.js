@@ -118,3 +118,24 @@ sliderEl.addEventListener("input", (event) => {
 
 	sliderEl.style.background = `linear-gradient(to right, #00FF62 ${progress}%, #ccc ${progress}%)`;
 })
+
+
+
+// Deposit Copy Address
+let tronBtn = document.getElementById('tron_btn');
+let tronVal = document.getElementById('tron_val').innerHTML;
+
+tronBtn.addEventListener('click',function(e){
+	e.preventDefault();
+	navigator.clipboard.writeText(tronVal);
+	document.getElementById('tronMSG').style.display = "flex";
+})
+
+let ercBtn = document.getElementById('erc_btn');
+let ercVal = document.getElementById('erc_val').innerHTML;
+
+ercBtn.addEventListener('click',function(e){
+	e.preventDefault();
+	navigator.clipboard.writeText(ercVal);
+	document.getElementById('ercMSG').style.display = "flex";
+})

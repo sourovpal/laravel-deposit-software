@@ -12,7 +12,7 @@
 
         <div class="col-8">
           <div class="site-logo">
-            <a href="index.html" class="font-weight-bold text-white">
+            <a href="{{ url('/') }}" class="font-weight-bold text-white">
               <img src="{{ asset('/frontend/images/logo.png') }}" alt="">
               Hybrid Theory
             </a>

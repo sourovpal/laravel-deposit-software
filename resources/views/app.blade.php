@@ -19,7 +19,7 @@
 <body>
     
     @yield('content')
-    
+    @include('inc.modal')
     @include('inc.script')
 </body>
 

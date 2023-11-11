@@ -52,12 +52,13 @@
                         <div>
                             <a href="#">Tron 20</a>
                         </div>
-                        <div>
+                        <div id="tron_val">
                             TPnpCi7R97ri646irrv5xxcYnp59BXhonT
                         </div>
-                        <div>
-                            <button id="deposit_copy" class="btn btn-sm btn-primary">
+                        <div class="align-items-center">
+                            <button id="tron_btn" class="btn btn-sm btn-primary">
                                 <span class="material-icons">content_copy</span>
+                                <span style="display: none;" id="tronMSG">Copied</span>
                             </button>
                         </div>
                     </div>
@@ -67,12 +68,13 @@
                         <div>
                             <a href="#">ERC 20</a>
                         </div>
-                        <div>
+                        <div id="erc_val">
                             TPnpCi7R97ri646irrv5xxcYnp59BXhonT
                         </div>
                         <div>
-                            <button id="deposit_copy" class="btn btn-sm btn-primary">
+                            <button id="erc_btn" class="btn btn-sm btn-primary">
                                 <span class="material-icons">content_copy</span>
+                                <span style="display: none;" id="ercMSG">Copied</span>
                             </button>
                         </div>
                     </div>

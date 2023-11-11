@@ -49,7 +49,7 @@
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Phone</th>
-                                                <th>Status</th>
+                                                {{-- <th>Status</th> --}}
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -59,21 +59,21 @@
                                             <tr>
                                                 <td>
                                                     @if($row->avatar != '')
-                                                    <img width="40" class="img-thumbnail" src="{{ asset('/profile/'. $row->avatar) }}" alt="">
+                                                    <img width="60" src="{{ asset('/backend/profile/'. $row->avatar) }}" alt="">
                                                     @else
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
+                                                    <img width="60" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
                                                     @endif
                                                 </td>
                                                 <td>{{ $row->name }}</td>
                                                 <td>{{ $row->email }}</td>
                                                 <td>{{ $row->phone }}</td>
-                                                <td>
+                                                {{-- <td>
                                                     @if($row->status == 1)
                                                     <span class="badge badge-success">Active</span>
                                                     @else
                                                     <span class="badge badge-danger">Inactive</span>
                                                     @endif
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     <a class="btn btn-sm btn-warning" href="{{ route('dashboard.admin.edit', $row->id) }}">Edit</a>
                                                     <a class="btn btn-sm btn-danger" href="{{ route('dashboard.admin.destroy', $row->id) }}">Delete</a>
