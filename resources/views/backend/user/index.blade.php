@@ -42,151 +42,44 @@
                                     <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th>Avatar</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
+                                                <th width="10%">Avatar</th>
+                                                <th width="30%">User</th>
+                                                <th width="15%">Phone</th>
+                                                <th width="10%">Referral User</th>
+                                                <th width="10%">Referral Code</th>
                                                 <th>Status</th>
-                                                <th>Action</th>
+                                                <th width="10%">Action</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
+                                        @foreach ($users as $user)
                                             <tr>
                                                 <td>
                                                     <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
                                                 </td>
-                                                <td>Sourov Pal</td>
-                                                <td>sourovpal35@gmail.com</td>
+                                                <td>
+                                                    <span class="d-block">{{$user->name}}</span>
+                                                    <span class="d-block">{{$user->email}}</span>
+                                                </td>
                                                 <td>01919852044</td>
+                                                <td>
+                                                    @if($user->referral_id)
+                                                    <a  href="" class="badge badge-success">View Referral</a>
+                                                    @else
+                                                    <span class="badge badge-danger">Without Referral</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{$user->referral_code}}</td>
                                                 <td>
                                                     <span class="badge badge-success">Active</span>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
+                                                    <a class="btn btn-sm btn-warning" href="">View</a>
                                                     <a class="btn btn-sm btn-danger" href="">Delete</a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Sourov Pal</td>
-                                                <td>sourovpal35@gmail.com</td>
-                                                <td>01919852044</td>
-                                                <td>
-                                                    <span class="badge badge-success">Active</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Sourov Pal</td>
-                                                <td>sourovpal35@gmail.com</td>
-                                                <td>01919852044</td>
-                                                <td>
-                                                    <span class="badge badge-success">Active</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Sourov Pal</td>
-                                                <td>sourovpal35@gmail.com</td>
-                                                <td>01919852044</td>
-                                                <td>
-                                                    <span class="badge badge-success">Active</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Sourov Pal</td>
-                                                <td>sourovpal35@gmail.com</td>
-                                                <td>01919852044</td>
-                                                <td>
-                                                    <span class="badge badge-success">Active</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Sourov Pal</td>
-                                                <td>sourovpal35@gmail.com</td>
-                                                <td>01919852044</td>
-                                                <td>
-                                                    <span class="badge badge-success">Active</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Sourov Pal</td>
-                                                <td>sourovpal35@gmail.com</td>
-                                                <td>01919852044</td>
-                                                <td>
-                                                    <span class="badge badge-success">Active</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Sourov Pal</td>
-                                                <td>sourovpal35@gmail.com</td>
-                                                <td>01919852044</td>
-                                                <td>
-                                                    <span class="badge badge-success">Active</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Sourov Pal</td>
-                                                <td>sourovpal35@gmail.com</td>
-                                                <td>01919852044</td>
-                                                <td>
-                                                    <span class="badge badge-success">Active</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
 

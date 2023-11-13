@@ -10,8 +10,8 @@
         </a>
         <div class="profile-header-info mt-3">
             <img src="https://placehold.co/80x80" alt="">
-            <h4>Username</h4>
-            <p>Referral Code <span>RZ323</span></p>
+            <h4>{{$user->name}}</h4>
+            <p>Referral Code <span>{{$user->referral_code}}</span></p>
             <div class=wrapper>
                 <div class="range">
                     <input type="range" min="0" max="100" value="100" id="range" />

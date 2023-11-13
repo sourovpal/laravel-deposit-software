@@ -16,9 +16,9 @@
             <img src="https://placehold.co/50x50" alt="Profile">
           </div>
           <div class="header-profile-content">
-            <p>User Name</p>
+            <p>{{$user->name}}</p>
             <hr class="profile-content-hr">
-            <p>Referral Code</p>
+            <p>{{$user->referral_code}}</p>
           </div>
         </div>
       </div>
@@ -29,45 +29,11 @@
     <section id="product-slider">
       <div class="container-fluid">
         <div class="owl-carousel owl-theme">
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/product-1.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/product-2.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/product-3.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/product-4.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/product-5.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/product-6.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/product-7.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/product-8.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/product-9.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/product-10.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/thumb-1.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/thumb-2.jp') }}g" alt="Product Slider">
-          </div>
-          <div class="item">
-            <img src="{{ asset('/frontend/images/product/thumb-3.jp') }}g" alt="Product Slider">
-          </div>
+            @foreach (\App\Models\Product::inRandomOrder()->limit(10)->get() as $product)
+                <div class="item">
+                    <img src="{{ asset('/frontend/images/product/'.$product->image) }}" alt="Brand Slider">
+                </div>
+            @endforeach
         </div>
       </div>
     </section>

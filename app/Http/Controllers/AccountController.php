@@ -8,23 +8,36 @@ class AccountController extends Controller
 {
     //
 
-    public function home(){
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            view()->share('user', auth()->guard('web')->user());
+            return $next($request);
+        });
+    }
+
+    public function home()
+    {
         return view('home');
     }
 
-    public function about(){
+    public function about()
+    {
         return view('about');
     }
 
-    public function start(){
+    public function start()
+    {
         return view('start');
     }
 
-    public function profile(){
+    public function profile()
+    {
         return view('profile');
     }
 
-    public function deposit(){
+    public function deposit()
+    {
         return view('deposit');
     }
 }

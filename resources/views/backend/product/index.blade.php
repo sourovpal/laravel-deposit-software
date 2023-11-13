@@ -33,8 +33,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header py-2 d-flex justify-content-between align-items-center">
                             <h3 class="card-title">View List</h3>
+                            <div class="">
+                                <a class="btn btn-primary btn-sm" href="{{ route('dashboard.product.create') }}"><i class="fa fa-plus mr-2"></i> Add New</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -52,111 +55,28 @@
                                         </thead>
 
                                         <tbody>
+                                        @foreach ($products as $product)
                                             <tr>
                                                 <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
+                                                    <img width="40" class="img-thumbnail" src="{{asset('frontend/images/product/'.$product->image)}}" alt="">
                                                 </td>
-                                                <td>Lorem ipsum dolor sit amet consectetur</td>
-                                                <td>$1200.00</td>
-                                                <td>$220.00</td>
+                                                <td>{{$product->title}}</td>
+                                                <td>${{$product->price}}</td>
+                                                <td>${{$product->profit}}</td>
                                                 <td>
+                                                @if($product->status == 1)
                                                     <span class="badge badge-success">Publish</span>
+                                                @else
+                                                    <span class="badge badge-warning">Derft</span>
+                                                @endif
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
+                                                    <a class="btn btn-sm btn-warning" href="{{route('dashboard.product.edit', $product->id)}}">Edit</a>
+                                                    <a class="btn btn-sm btn-danger" href="{{route('dashboard.product.destroy', $product->id)}}">Delete</a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Lorem ipsum dolor sit amet consectetur</td>
-                                                <td>$1200.00</td>
-                                                <td>$220.00</td>
-                                                <td>
-                                                    <span class="badge badge-success">Publish</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Lorem ipsum dolor sit amet consectetur</td>
-                                                <td>$1200.00</td>
-                                                <td>$220.00</td>
-                                                <td>
-                                                    <span class="badge badge-success">Publish</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Lorem ipsum dolor sit amet consectetur</td>
-                                                <td>$1200.00</td>
-                                                <td>$220.00</td>
-                                                <td>
-                                                    <span class="badge badge-success">Publish</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Lorem ipsum dolor sit amet consectetur</td>
-                                                <td>$1200.00</td>
-                                                <td>$220.00</td>
-                                                <td>
-                                                    <span class="badge badge-success">Publish</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Lorem ipsum dolor sit amet consectetur</td>
-                                                <td>$1200.00</td>
-                                                <td>$220.00</td>
-                                                <td>
-                                                    <span class="badge badge-success">Publish</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
-                                                </td>
-                                                <td>Lorem ipsum dolor sit amet consectetur</td>
-                                                <td>$1200.00</td>
-                                                <td>$220.00</td>
-                                                <td>
-                                                    <span class="badge badge-success">Publish</span>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                                </td>
-                                            </tr>
+                                        @endforeach
+                                            
                                         </tbody>
                                     </table>
 

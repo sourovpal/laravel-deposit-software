@@ -29,7 +29,7 @@
                 <div class="register-button">
                   <a href="{{ route('login') }}">Login</a>
                 </div>
-                <form action="{{ route('register.submit') }}" method="post">
+                <form action="{{ url()->full() }}" method="post">
                   @csrf
                   <div class="form-group">
                     <input type="text" name="name" placeholder="Name" value="{{ old('name') }}">
