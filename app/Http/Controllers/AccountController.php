@@ -40,4 +40,9 @@ class AccountController extends Controller
     {
         return view('deposit');
     }
+
+    public function withdraw()
+    {
+        return view('withdraw');
+    }
 }
