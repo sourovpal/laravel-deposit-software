@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Certificate;
+use App\Models\Contract;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -18,7 +21,10 @@ class AccountController extends Controller
 
     public function home()
     {
-        return view('home');
+        $event = Event::findOrFail(1);
+        $contract = Contract::findOrFail(1);
+        $certificate = Certificate::findOrFail(1);
+        return view('home', compact('event', 'contract', 'certificate'));
     }
 
     public function about()

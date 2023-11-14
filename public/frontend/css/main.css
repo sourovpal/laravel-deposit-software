@@ -9,7 +9,9 @@
 
 /* Main  */
 main{
-    background: #0914D0;
+    background: url('../images/desk_bg.jpg');
+    background-position: center;
+    background-size: cover;
     padding: 1rem 0;
 }
 

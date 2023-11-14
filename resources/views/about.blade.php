@@ -22,11 +22,13 @@
           <div class="col-md-8">
             <div class="about-content">
               <h4>Hybrid Theory</h4>
-              <h3>About Us</h3>
-              <div class="text-center">
-                <img src="images/logo.png" alt="">
-                <p>Helping businesses grow through the magic of creative and the science of digital marketing, we've remained doers who empathize with the real-world needs of businesses: from launching and growing our own products to open sourcing our own marketing plans, we practice what we preach.</p>
-              </div>
+              @foreach (\App\Models\About::where('id', 1)->get() as $about)
+                <h3>{{ $about->title }}</h3>
+                <div class="text-center">
+                  <img src="{{ asset('/frontend/images/logo.png') }}" alt="">
+                  <p>{!! $about->content !!}</p>
+                </div>
+              @endforeach
             </div>
           </div>
           <div class="col-md-2"></div>

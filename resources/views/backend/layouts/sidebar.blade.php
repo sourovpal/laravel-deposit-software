@@ -35,7 +35,7 @@
 
                 <li>
                     <a href="{{ route('dashboard.admin.index') }}" class="waves-effect">
-                        <i class="fa fa-users"></i>
+                        <i class="fa fa-user"></i>
                         <span> Admins </span>
                     </a>
                 </li>
@@ -51,6 +51,52 @@
                     <a href="{{ route('dashboard.product.index') }}" class="waves-effect">
                         <i class="mdi mdi-widgets"></i>
                         <span> Products </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('dashboard.about.index') }}" class="waves-effect">
+                        <i class="mdi mdi-information"></i>
+                        <span> About Us </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="{{ route('dashboard.brand.index') }}" class="waves-effect">
+                        <i class="mdi mdi-border-all"></i>
+                        <span> Brand Slider </span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ route('dashboard.faq.index') }}" class="waves-effect">
+                        <i class="mdi mdi-calendar-question"></i>
+                        <span> FAQ </span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ route('dashboard.event.index') }}" class="waves-effect">
+                        <i class="mdi mdi-calendar-month"></i>
+                        <span> Event </span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ route('dashboard.contract.index') }}" class="waves-effect">
+                        <i class="mdi mdi-file-certificate-outline"></i>
+                        <span> Contract </span>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="{{ route('dashboard.certificate.index') }}" class="waves-effect">
+                        <i class="mdi mdi-file-certificate"></i>
+                        <span> Certificate </span>
                     </a>
                 </li>
 

@@ -78,5 +78,55 @@ Route::prefix('/dashboard')->as('dashboard.')->group(function () {
             Route::post('/edit/{id}', 'update')->name('update');
             Route::get('/destroy/{id}', 'destroy')->name('destroy');
         });
+
+        // FAQ ROUTE 
+        Route::controller('Admin\FaqController')->as('faq.')->prefix('faq')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/edit/{id}', 'update')->name('update');
+        });
+
+
+        // BRAND ROUTE
+        Route::controller('Admin\BrandController')->as('brand.')->prefix('brand')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/create', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/edit/{id}', 'update')->name('update');
+            Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        });
+
+        // ABOUT ROUTE 
+        Route::controller('Admin\AboutController')->as('about.')->prefix('about')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/edit/{id}', 'update')->name('update');
+        });
+
+
+        // EVENT ROUTE 
+        Route::controller('Admin\EventController')->as('event.')->prefix('event')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/edit/{id}', 'update')->name('update');
+        });
+
+
+        // CONTRACT ROUTE 
+        Route::controller('Admin\ContractController')->as('contract.')->prefix('contract')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/edit/{id}', 'update')->name('update');
+        });
+        
+
+        // CERTIFICATE ROUTE 
+        Route::controller('Admin\CertificateController')->as('certificate.')->prefix('certificate')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/edit/{id}', 'update')->name('update');
+        });
+
     });
 });

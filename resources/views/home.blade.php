@@ -31,7 +31,7 @@
         <div class="owl-carousel owl-theme">
             @foreach (\App\Models\Product::inRandomOrder()->limit(10)->get() as $product)
                 <div class="item">
-                    <img src="{{ asset('/frontend/images/product/'.$product->image) }}" alt="Brand Slider">
+                    <img src="{{ asset('/frontend/images/product/'.$product->image) }}" alt="Product Slider">
                 </div>
             @endforeach
         </div>
@@ -43,12 +43,14 @@
       <div class="container">
         <div class="row">
           <div class="col-4">
-            <div class="home-option-content">
-              <div class="home-option-icon">
-                <img src="{{ asset('/frontend/images/home_option_icon/certificate.png') }}" alt="Home Option Menus">
+            <a href="#Certificate" data-toggle="modal">
+              <div class="home-option-content">
+                <div class="home-option-icon">
+                  <img src="{{ asset('/frontend/images/home_option_icon/certificate.png') }}" alt="Home Option Menus">
+                </div>
+                <h6>Certificate</h6>
               </div>
-              <h6>Certificate</h6>
-            </div>
+            </a>
           </div>
           <div class="col-4">
             <div class="home-option-content">
@@ -69,12 +71,14 @@
             </a>
           </div>
           <div class="col-4">
-            <div class="home-option-content">
-              <div class="home-option-icon">
-                <img src="{{ asset('/frontend/images/home_option_icon/contract.png') }}" alt="Home Option Menus">
+            <a href="#Contract" data-toggle="modal">
+              <div class="home-option-content">
+                <div class="home-option-icon">
+                  <img src="{{ asset('/frontend/images/home_option_icon/contract.png') }}" alt="Home Option Menus">
+                </div>
+                <h6>Contract</h6>
               </div>
-              <h6>Contract</h6>
-            </div>
+            </a>
           </div>
           <div class="col-4">
             <a href="#FAQ" data-toggle="modal">
@@ -87,12 +91,14 @@
             </a>
           </div>
           <div class="col-4">
-            <div class="home-option-content">
-              <div class="home-option-icon">
-                <img src="{{ asset('/frontend/images/home_option_icon/event.png') }}" alt="Home Option Menus">
+            <a href="#Event" data-toggle="modal">
+              <div class="home-option-content">
+                <div class="home-option-icon">
+                  <img src="{{ asset('/frontend/images/home_option_icon/event.png') }}" alt="Home Option Menus">
+                </div>
+                <h6>Event</h6>
               </div>
-              <h6>Event</h6>
-            </div>
+            </a>
           </div>
         </div>
       </div>
