@@ -22,14 +22,14 @@
             <div class="row">
                 <div class="col-4">
                     <div class="profile-info-content">
-                        <h1>{{ number_format(\App\Models\Deposit::where('type', 'deposit')->whereDate('deposit_date', now()->format('Y-m-d'))->where('user_id', $user->id)->sum('amount'), 2) }} USDT</h1>
-                        <p>Today's Balance</p>
+                        <h1>{{ number_format(abs(\App\Models\Deposit::whereDate('deposit_date', now()->format('Y-m-d'))->where('user_id', $user->id)->where('amount', '<', 0)->sum('amount')), 2) }} USDT</h1>
+                        <p>Today's Withdraw</p>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="profile-info-content">
-                        <h1>{{ number_format(\App\Models\Deposit::where('type', 'profit')->whereDate('deposit_date', now()->format('Y-m-d'))->where('user_id', $user->id)->sum('amount'), 2) }} USDT</h1>
-                        <p>Today's Profit</p>
+                        <h1>{{ number_format(abs(\App\Models\Deposit::where('user_id', $user->id)->where('amount', '<', 0)->sum('amount')), 2) }} USDT</h1>
+                        <p>Total Withdraw</p>
                     </div>
                 </div>
                 <div class="col-4">

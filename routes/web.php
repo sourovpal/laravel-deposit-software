@@ -30,7 +30,12 @@ Route::middleware(['auth'])->controller('AccountController')->group(function () 
     Route::get('/profile', 'profile')->name('profile');
     Route::get('/start', 'start')->name('start');
     Route::get('/deposit', 'deposit')->name('deposit');
+    Route::get('/withdraw', 'withdraw')->name('withdraw');
 });
+// Route::controller('Admin\DepositController')->group(function () {
+
+//     Route::get('/deposit', 'index')->name('deposit');
+// });
 
 
 

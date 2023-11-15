@@ -92,9 +92,11 @@
              </div>
              <div class="modal-body">
                 <h3>Certificate</h3>
-                 <div class="faq-content">
-                    <img src="{{ asset('/frontend/images/certificate/'.$certificate->file) }}" width="100%" alt="Certificate">
-                 </div>
+                @foreach (\App\Models\Certificate::where('id', 1)->get() as $certificate)
+                    <div class="faq-content">
+                        <img src="{{ asset('/frontend/images/certificate/'.$certificate->file) }}" width="100%" alt="Certificate">
+                    </div>
+                @endforeach                
              </div>
          </div>
      </div>
@@ -109,12 +111,14 @@
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
-          <div class="modal-body">
-             <h3>Contract</h3>
-              <div class="faq-content">
-                 <img src="{{ asset('/frontend/images/contract/'.$contract->file) }}" width="100%" alt="Contract">
-              </div>
-          </div>
+            <div class="modal-body">
+                <h3>Contract</h3>
+                @foreach (\App\Models\Contract::where('id', 1)->get() as $contract)
+                    <div class="faq-content">
+                        <img src="{{ asset('/frontend/images/contract/'.$contract->file) }}" width="100%" alt="Contract">
+                    </div>
+                @endforeach                
+            </div>
       </div>
   </div>
 </div>
@@ -129,10 +133,12 @@
               </button>
           </div>
           <div class="modal-body">
-             <h3>Event</h3>
-              <div class="faq-content">
-                 <img src="{{ asset('/frontend/images/event/'.$event->file) }}" width="100%" alt="Event">
-              </div>
+                <h3>Event</h3>
+                @foreach (\App\Models\Event::where('id', 1)->get() as $event)
+                    <div class="faq-content">
+                        <img src="{{ asset('/frontend/images/event/'.$event->file) }}" width="100%" alt="Event">
+                    </div>
+                @endforeach
           </div>
       </div>
   </div>
