@@ -48,6 +48,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('dashboard.deposit.index') }}" class="waves-effect">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span> Withdraw & Deposit </span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('dashboard.product.index') }}" class="waves-effect">
                         <i class="mdi mdi-widgets"></i>
                         <span> Products </span>

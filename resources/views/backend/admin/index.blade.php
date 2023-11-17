@@ -105,12 +105,6 @@
 @push('custom_scripts')
 <script src="{{ asset('backend/libs/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('backend/libs/datatables/dataTables.bootstrap4.min.js') }}"></script>
-
-<script src="{{ asset('backend/libs/datatables/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('backend/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
-
-<script src="{{ asset('backend/libs/datatables/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('backend/libs/datatables/buttons.bootstrap4.min.js') }}"></script>
 <script>
     (function(){
         $('#datatable').DataTable();

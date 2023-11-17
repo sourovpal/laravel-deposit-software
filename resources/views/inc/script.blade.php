@@ -4,3 +4,4 @@
 <script src="{{ asset('frontend/js/jquery.sticky.js')}}"></script>
 <script src="{{ asset('frontend/js/owl.carousel.min.js')}}"></script>
 <script src="{{ asset('frontend/js/main.js')}}"></script>
+@stack('custom_scripts')

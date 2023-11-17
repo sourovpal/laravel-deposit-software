@@ -1,7 +1,9 @@
 @extends('app')
-
+@push('custom_styles')
+     <link href="{{ asset('backend/libs/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+@endpush
 @section('content')
-  
+
 <main id="profile-page">
     <!-- Profile Header -->
     <section id="profile-header">
@@ -20,21 +22,33 @@
             </div>
 
             <div class="row">
-                <div class="col-4">
+                <div class="col-lg-2">
                     <div class="profile-info-content">
-                        <h1>{{ number_format(\App\Models\Deposit::where('type', 'deposit')->whereDate('deposit_date', now()->format('Y-m-d'))->where('user_id', $user->id)->sum('amount'), 2) }} USDT</h1>
+                        <h1>{{ number_format(\App\Models\Deposit::where('type', 'deposit')->where('status', 1)->whereDate('deposit_date', now()->format('Y-m-d'))->where('user_id', $user->id)->sum('amount'), 2) }} USDT</h1>
                         <p>Today's Balance</p>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-3">
                     <div class="profile-info-content">
-                        <h1>{{ number_format(\App\Models\Deposit::where('type', 'profit')->whereDate('deposit_date', now()->format('Y-m-d'))->where('user_id', $user->id)->sum('amount'), 2) }} USDT</h1>
+                        <h1>{{ number_format(\App\Models\Deposit::where('type', 'profit')->where('status', 1)->whereDate('deposit_date', now()->format('Y-m-d'))->where('user_id', $user->id)->sum('amount'), 2) }} USDT</h1>
                         <p>Today's Profit</p>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-2">
                     <div class="profile-info-content">
-                        <h1>{{ number_format(\App\Models\Deposit::where('user_id', $user->id)->sum('amount'), 2) }} USDT</h1>
+                        <h1>{{ number_format(abs(\App\Models\Deposit::whereDate('deposit_date', now()->format('Y-m-d'))->where('status', 1)->where('user_id', $user->id)->where('amount', '<', 0)->sum('amount')), 2) }} USDT</h1>
+                        <p>Today's Withdraw</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="profile-info-content">
+                        <h1>{{ number_format(abs(\App\Models\Deposit::where('user_id', $user->id)->where('status', 1)->where('amount', '<', 0)->sum('amount')), 2) }} USDT</h1>
+                        <p>Total Withdraw</p>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="profile-info-content">
+                        <h1>{{ number_format(\App\Models\Deposit::where('user_id', $user->id)->where('status', 1)->sum('amount'), 2) }} USDT</h1>
                         <p>Total Balance</p>
                     </div>
                 </div>
@@ -86,7 +100,95 @@
             </div>
         </div>
     </section>
+    <section id="profile-transaction" class="pb-5 mb-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 mb-3 mb-lg-0">
+                    <h4>Withdraw & Deposit</h4>
+                    <div class="table-responsive">
+                        <table id="datatable" class="table table-bordered table-sm">
+                            <thead>
+                                <tr>
+                                    <td width="5%">#</td>
+                                    <td width="10%">Date</td>
+                                    <td width="15%">Transition Type</td>
+                                    <td width="15%">Amount</td>
+                                    <td width="10%">Status</td>
+                                    <td>Note</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (\App\Models\Deposit::where('user_id', $user->id)->orderBy('id', 'desc')->get() as $deposit)
+                                <tr>
+                                    <td>{{$loop->index+1}}</td>
+                                    <td>{{$deposit->deposit_date}}</td>
+                                    <td>
+                                        @if ($deposit->type == 'deposit')
+                                            <span class="badge badge-success">Deposit</span>
+                                        @elseif ($deposit->type == 'profit')
+                                            <span class="badge badge-primary">Profit</span>
+                                        @else
+                                            <span class="badge badge-warning">Withdraw</span>
+                                        @endif
+                                    </td>
+                                    <td>{{number_format($deposit->amount,  2)}} USDT</td>
+                                    <td>
+                                        @if ($deposit->status == 0)
+                                            <span class="badge badge-primary">Pending</span>
+                                        @elseif ($deposit->status == 1)
+                                            <span class="badge badge-success">Approve</span>
+                                        @else
+                                            <span class="badge badge-danger">Cancel</span>
+                                        @endif
+                                    </td>
+                                    <td>{{$deposit->note}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Add New Withdraw & Deposit</h4>
+                    <br>
+                    <form action="" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <input required class="form-control" type="number" name="amount" placeholder="Amount" step="any" value="{{ old('amount') }}">
+                            @error('amount') <span class="d-block form-error">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group">
+                            <select required class="form-control" name="transition_type" id="">
+                                <option value="">Transition Type</option>
+                                <option @if(old('transition_type') == 1) selected @endif value="1">Withdraw</option>
+                                <option @if(old('transition_type') == 2) selected @endif value="2">Deposit</option>
+                            </select>
+                            @error('transition_type') <span class="d-block form-error">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group">
+                            <textarea required class="form-control" type="text" name="note" placeholder="Note" value="">{{ old('note') }}</textarea>
+                            @error('note') <span class="d-block form-error">{{ $message }}</span> @enderror
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section><br><br><br>
     @include('inc.bottom-navbar')
 </main>
 
 @endsection
+
+
+@push('custom_scripts')
+<script src="{{ asset('backend/libs/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/libs/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script>
+    (function(){
+        $('#datatable').DataTable();
+    })();
+</script>
+@endpush

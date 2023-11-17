@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('provider_id')->default(0);
             $table->string('type')->nullable(); //profit & deposit & widrow
             $table->float('amount', 8, 2)->default(0.00);
             $table->string('currency')->default('usd');
             $table->string('status')->default(0);
             $table->date('deposit_date')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

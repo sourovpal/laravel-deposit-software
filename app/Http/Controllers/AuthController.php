@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,8 +37,15 @@ class AuthController extends Controller
             $data['password'] = bcrypt($request->password);
             $data['referral_code']  = $code;
             $data['referral_id']  = optional($refUser)->id ?? 0;
-
             $user = User::create($data);
+            $deposit = Deposit::create([
+                'user_id' => $user->id,
+                'type' => 'deposit',
+                'amount' => 15,
+                'status' => 1,
+                'deposit_date' => now()->format('Y-m-d'),
+                'note' => 'Created new account so you got $15 gift',
+            ]);
             Auth::guard('web')->login($user);
 
             return redirect()->route('home')->withSuccess('Successfully Sign Up');

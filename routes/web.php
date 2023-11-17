@@ -30,7 +30,7 @@ Route::middleware(['auth'])->controller('AccountController')->group(function () 
     Route::get('/profile', 'profile')->name('profile');
     Route::get('/start', 'start')->name('start');
     Route::get('/deposit', 'deposit')->name('deposit');
-    Route::get('/withdraw', 'withdraw')->name('withdraw');
+    Route::post('/deposit', 'depositWithdraw')->name('depositWithdraw');
 });
 // Route::controller('Admin\DepositController')->group(function () {
 
@@ -83,6 +83,22 @@ Route::prefix('/dashboard')->as('dashboard.')->group(function () {
             Route::post('/edit/{id}', 'update')->name('update');
             Route::get('/destroy/{id}', 'destroy')->name('destroy');
         });
+        Route::controller('Admin\DepositController')->as('deposit.')->prefix('deposits')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/edit/{id}', 'update')->name('update');
+        });
+
+        // 
+        Route::controller('Admin\ProductController')->as('product.')->prefix('products')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/create', 'store')->name('store');
+            Route::get('/show/{id}', 'show')->name('show');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/edit/{id}', 'update')->name('update');
+            Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        });
 
         // FAQ ROUTE 
         Route::controller('Admin\FaqController')->as('faq.')->prefix('faq')->group(function () {
@@ -124,7 +140,7 @@ Route::prefix('/dashboard')->as('dashboard.')->group(function () {
             Route::get('/edit/{id}', 'edit')->name('edit');
             Route::post('/edit/{id}', 'update')->name('update');
         });
-        
+
 
         // CERTIFICATE ROUTE 
         Route::controller('Admin\CertificateController')->as('certificate.')->prefix('certificate')->group(function () {
@@ -132,6 +148,5 @@ Route::prefix('/dashboard')->as('dashboard.')->group(function () {
             Route::get('/edit/{id}', 'edit')->name('edit');
             Route::post('/edit/{id}', 'update')->name('update');
         });
-
     });
 });

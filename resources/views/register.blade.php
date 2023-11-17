@@ -13,7 +13,7 @@
     </div>
 
     <!-- Brand Slider -->
-    <section id="login-brand-slider">
+    <section id="login-brand-slider" class="mb-3">
       <div class="container-fluid">
         @include('inc.slider')
       </div>
@@ -32,24 +32,28 @@
                 <form action="{{ url()->full() }}" method="post">
                   @csrf
                   <div class="form-group">
-                    <input type="text" name="name" placeholder="Name" value="{{ old('name') }}">
+                    <input required type="text" name="name" placeholder="Name" value="{{ old('name') }}">
                     @error('name') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
                   <div class="form-group">
-                    <input type="text" name="email" placeholder="Email" value="{{ old('email') }}">
+                    <input required type="text" name="email" placeholder="Email" value="{{ old('email') }}">
                     @error('email') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
                   <div class="form-group">
-                    <input type="number" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
+                    <input required type="number" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
                     @error('phone') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
                   <div class="form-group">
-                    <input type="password" name="password" placeholder="Password">
+                    <input required type="password" name="password" placeholder="Password">
                     @error('password') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
                   <div class="form-group">
-                    <input type="password" name="confirm_password" placeholder="Confirm Password">
+                    <input required type="password" name="confirm_password" placeholder="Confirm Password">
                     @error('confirm_password') <span class="d-block form-error">{{ $message }}</span> @enderror
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="referral_code" placeholder="Referral Code">
+                    @error('referral_code') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
                   <div class="login-button">
                     <button>Register</button>
