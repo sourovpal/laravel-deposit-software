@@ -114,6 +114,7 @@
                                     <td width="15%">Transition Type</td>
                                     <td width="15%">Amount</td>
                                     <td width="10%">Status</td>
+                                    <td width="10%">Addr & Img</td>
                                     <td>Note</td>
                                 </tr>
                             </thead>
@@ -141,6 +142,19 @@
                                             <span class="badge badge-danger">Cancel</span>
                                         @endif
                                     </td>
+                                    <td>
+
+                                        @if ($deposit->type == 'deposit' && $deposit->address != '')
+                                            <div>
+                                                <img class="img-thumbnail" style="width:50px;" src="{{asset('document/'.$deposit->address)}}" />
+                                            </div>
+                                        @elseif ($deposit->type == 'profit' && $deposit->address == '')
+                                            <span class="badge badge-warning">Not added yet</span>
+                                        @else
+                                            {{$deposit->address}}
+                                        @endif
+
+                                    </td>
                                     <td>{{$deposit->note}}</td>
                                 </tr>
                             @endforeach
@@ -151,7 +165,7 @@
                 <div class="col-lg-4">
                     <h4>Add New Withdraw & Deposit</h4>
                     <br>
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <input required class="form-control" type="number" name="amount" placeholder="Amount" step="any" value="{{ old('amount') }}">
@@ -160,10 +174,14 @@
                         <div class="form-group">
                             <select required class="form-control" name="transition_type" id="">
                                 <option value="">Transition Type</option>
-                                <option @if(old('transition_type') == 1) selected @endif value="1">Withdraw</option>
-                                <option @if(old('transition_type') == 2) selected @endif value="2">Deposit</option>
+                                <option  value="1">Withdraw</option>
+                                <option  value="2">Deposit</option>
                             </select>
                             @error('transition_type') <span class="d-block form-error">{{ $message }}</span> @enderror
+                        </div>
+                        <div id="custom_field">
+                            @error('address') <span class="d-block form-error">{{ $message }}</span> @enderror
+                            @error('screenshort')<span class="d-block form-error">{{ $message }}</span>@enderror
                         </div>
                         <div class="form-group">
                             <textarea required class="form-control" type="text" name="note" placeholder="Note" value="">{{ old('note') }}</textarea>
@@ -189,6 +207,27 @@
 <script>
     (function(){
         $('#datatable').DataTable();
+
+        $(document).on('change', '[name="transition_type"]', function(){
+            var val = $(this).val();
+            if(val == 1){
+                $('#custom_field').html(`
+                    <div class="form-group">
+                        <input required class="form-control" type="text" name="address" placeholder="Address">
+                    </div>
+                `);
+            }else if(val == 2){
+                $('#custom_field').html(`
+                    <div class="form-group">
+                        <label class="form-label">Deposit Screenshort:</label>
+                        <input required class="d-block" type="file" accept="image/png, image/webp, image/jpg, image/jpeg" name="screenshort" placeholder="screenshort">
+                    </div>
+                `);
+            }else{
+                $('#custom_field').html(``);
+            }
+        });
+
     })();
 </script>
 @endpush

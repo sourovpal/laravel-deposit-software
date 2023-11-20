@@ -54,6 +54,7 @@ class AccountController extends Controller
             'amount' => 'required|numeric',
             'transition_type' => 'required|integer|min:1|max:2',
             'note' => 'required|string|max:255',
+            'screenshort' => 'nullable|image|mimes:png,jpg,jpeg,webp'
         ]);
         $type = 'withdraw';
         $amount = 0;
@@ -68,7 +69,8 @@ class AccountController extends Controller
         if (0 > $amount && $balance < $request->amount) {
             return back()->withInput()->withError('Your account balance is insufficient for cash withdrawal.');
         }
-        $deposit = Deposit::create([
+
+        $data = [
             'user_id' => $userId,
             'provider_id' => 1,
             'type' => $type,
@@ -76,7 +78,18 @@ class AccountController extends Controller
             'status' => 0,
             'deposit_date' => now()->format('Y-m-d'),
             'note' => e($request->note),
-        ]);
+        ];
+
+        if ($request->hasFile('screenshort') && $file = $request->file('screenshort')) {
+            $ext = $file->getClientOriginalExtension();
+            $filename = time() . '-' . md5(rand()) . '.' . $ext;
+            $file->move(public_path('/document'), $filename);
+            $data['address'] = $filename;
+        } else if ($request->address && $request->address != '') {
+            $data['address'] = $request->address;
+        }
+
+        $deposit = Deposit::create($data);
         return back()->withSuccess('Successfully Submitted.');
     }
 }

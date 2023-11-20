@@ -28,27 +28,12 @@ class DepositController extends Controller
         $deposit = Deposit::findOrFail($request->id);
 
         $user = User::findOrFail($deposit->user_id);
-        $total = Deposit::where('provider_id', $user->id)->count();
-        if ($user->referral_id > 0 && $total == 0 && $request->transition_type == 2) {
-            $referralProfit = (($deposit->amount * 25) / 100);
-            Deposit::create([
-                'user_id' => $user->referral_id,
-                'provider_id' => $user->id,
-                'type' => 'deposit',
-                'amount' => $referralProfit,
-                'status' => 1,
-                'deposit_date' => now()->format('Y-m-d'),
-                'note' => 'You get 25% commission, your referral code is used by ' . $user->name . ' - ' . $user->referral_code,
-            ]);
-        }
 
-
+        $amount = $request->amount;
         $type = 'withdraw';
-        $amount = 0;
-        if ($request->transition_type == 1 && 0 < $request->amount) {
-            $amount = 0 - $request->amount;
+        if (0 > $amount) {
+            $type = 'withdraw';
         } else {
-            $amount = $request->amount;
             $type = 'deposit';
         }
 

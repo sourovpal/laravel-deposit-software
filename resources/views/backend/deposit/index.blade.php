@@ -48,6 +48,7 @@
                                                 <td width="10%">Transition Type</td>
                                                 <td width="10%">Amount</td>
                                                 <td width="10%">Status</td>
+                                                <td width="10%">Addr & Img</td>
                                                 <td>Note</td>
                                                 <td width="5%">Action</td>
                                             </tr>
@@ -89,6 +90,19 @@
                                                     @else
                                                         <span class="badge badge-danger">Cancel</span>
                                                     @endif
+                                                </td>
+                                                <td>
+
+                                                    @if ($deposit->type == 'deposit' && $deposit->address != '')
+                                                        <a href="{{asset('document/'.$deposit->address)}}">
+                                                            <img class="img-thumbnail" style="width:50px;" src="{{asset('document/'.$deposit->address)}}" />
+                                                        </a>
+                                                    @elseif ($deposit->type == 'profit' && $deposit->address == '')
+                                                        <span class="badge badge-warning">Not added yet</span>
+                                                    @else
+                                                        {{$deposit->address}}
+                                                    @endif
+
                                                 </td>
                                                 <td>{{$deposit->note}}</td>
                                                 <td>

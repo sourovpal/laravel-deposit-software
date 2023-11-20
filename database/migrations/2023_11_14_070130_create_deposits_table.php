@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('status')->default(0);
             $table->date('deposit_date')->nullable();
             $table->text('note')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
