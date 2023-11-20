@@ -70,7 +70,7 @@ Route::prefix('/dashboard')->as('dashboard.')->group(function () {
             Route::get('/create', 'create')->name('create');
             Route::get('/show/{id}', 'show')->name('show');
             Route::get('/edit/{id}', 'edit')->name('edit');
-            Route::get('/edit/{id}', 'update')->name('update');
+            Route::post('/edit/{id}', 'update')->name('update');
             Route::get('/destroy', 'destroy')->name('destroy');
         });
 

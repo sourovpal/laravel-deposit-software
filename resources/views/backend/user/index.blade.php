@@ -72,10 +72,14 @@
                                                 </td>
                                                 <td>{{$user->referral_code}}</td>
                                                 <td>
-                                                    <span class="badge badge-success">Active</span>
+                                                    @if($user->status == 0)
+                                                    <span class="badge badge-success">Test Mode</span>
+                                                    @else
+                                                    <span class="badge badge-success">Live Mode</span>
+                                                    @endif
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-warning" href="">View</a>
+                                                    <a class="btn btn-sm btn-warning" href="{{route('dashboard.user.edit', $user->id)}}">Edit</a>
                                                     <a class="btn btn-sm btn-danger" href="">Delete</a>
                                                 </td>
                                             </tr>
