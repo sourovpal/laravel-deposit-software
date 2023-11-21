@@ -70,23 +70,36 @@
                                     <td width="10%">Name</td>
                                     <td width="15%">Price</td>
                                     <td width="10%">Status</td>
+                                    <td width="10%">Action</td>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($products as $product)
+                            @foreach($orders as $order)
+                                @if(optional($order->product) )
                                 <tr>
                                     <td>{{$loop->index+1}}</td>
-                                    <td>{{ asset('frontend/images/product/'.$product->image)}}</td>
-                                    <td>{{$product->title}}</td>
-                                    <td>${{$product->price}} - ${{ $product->price_to }}</td>
+                                    <td> <img style="width:80px;" src="{{ asset('frontend/images/product/'.$order->product->image)}}" alt=""></td>
+                                    <td>{{$order->product->title}}</td>
+                                    <td>${{$order->product->price}} - ${{ $order->product->price_to }}</td>
                                     <td>
-                                        @if ($deposit->status == 0)
+                                        @if ($order->status == 0)
                                             <span class="badge badge-primary">Pending</span>
-                                        @elseif ($deposit->status == 1)
-                                            <span class="badge badge-success">Approve</span>
+                                        @elseif ($order->status == 1)
+                                            <span class="badge badge-success">Complete</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($order->status == 0)
+                                            <form action="{{route('product_added')}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="status" value="1">
+                                                <input type="hidden" name="product_id" value="{{ $order->product->id }}">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
                                         @endif
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>

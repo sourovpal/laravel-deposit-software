@@ -42,13 +42,34 @@ class AccountController extends Controller
 
     public function product_added(Request $request)
     {
-        if($request->product_id > 0){
-            Order::create([
-                'user_id' => auth()->guard('web')->id(),
-                'product_id' => auth()->guard('web')->id(),
-                'status' => 1,
+        if ($request->product_id > 0) {
+            $userId = auth()->guard('web')->id();
+            $product = Product::findOrFail($request->product_id);
+
+            $order = Order::updateOrCreate(['product_id' => $request->product_id, 'user_id' => $userId], [
+                'user_id' => $userId,
+                'product_id' => $request->product_id,
+                'status' => $request->status,
             ]);
-            return back()->withSuccess('Successfully added.');
+
+            if (Order::where('product_id', $request->product_id)->where('user_id', $userId)->where('status', 1)->first()) {
+                $profit = (($product->price + $product->price_to) * 0.5) / 100;
+                $data = [
+                    'user_id' => $userId,
+                    'provider_id' => 0,
+                    'type' => 'profit',
+                    'amount' => $profit,
+                    'status' => 1,
+                    'deposit_date' => now()->format('Y-m-d'),
+                    'note' => 'Product Added Profit 0.5%',
+                ];
+                Deposit::create($data);
+            }
+
+
+            if (!$request->ajax()) {
+                return back()->withSuccess('Successfully added.');
+            }
         }
         return back()->withError('Something want wrong!');
     }
@@ -63,10 +84,10 @@ class AccountController extends Controller
         return view('deposit');
     }
 
-    public function product(){
-        $productIds = Order::where('user_id', auth()->guard('web')->id())->pluck('product_id')->toArray();
-        $products = Product::whereIn('id', $productIds)->get();
-        return view('product', compact('products'));
+    public function product()
+    {
+        $orders = Order::where('user_id', auth()->guard('web')->id())->get();
+        return view('product', compact('orders'));
     }
 
     public function depositWithdraw(Request $request)
@@ -77,12 +98,17 @@ class AccountController extends Controller
             'note' => 'required|string|max:255',
             'screenshort' => 'nullable|image|mimes:png,jpg,jpeg,webp'
         ]);
+
         $type = 'withdraw';
         $amount = 0;
         $userId = auth()->guard('web')->id();
         $balance = Deposit::where('user_id', $userId)->where('status', 1)->sum('amount');
         if ($request->transition_type == 1) {
             $amount = 0 - $request->amount;
+            $order = Order::where('user_id', $userId)->count();
+            if ($order < 40) {
+                return back()->withInput()->withError('Please Complete 40 product submit then withdrawal.');
+            }
         } else {
             $amount = $request->amount;
             $type = 'deposit';

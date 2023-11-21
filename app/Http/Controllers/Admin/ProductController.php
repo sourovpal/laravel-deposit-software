@@ -43,7 +43,7 @@ class ProductController extends Controller
         $data['slug'] = Str::slug($request->title);
         $data['price'] = $request->price;
         $data['price_to'] = $request->price_to;
-        $data['position'] = $request->position;
+        $data['position'] = $request->position ?? 0;
         $data['status'] = $request->status ? 1 : 0;
         try {
             Product::create($data);
@@ -87,7 +87,7 @@ class ProductController extends Controller
         $data['slug'] = Str::slug($request->title);
         $data['price'] = $request->price;
         $data['price_to'] = $request->price_to;
-        $data['position'] = $request->position;
+        $data['position'] = $request->position ?? 0;
         $data['status'] = $request->status ? 1 : 0;
         try {
             $edit->update($data);
