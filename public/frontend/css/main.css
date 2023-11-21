@@ -317,6 +317,9 @@ main{
 #bit-product .bit-product-img img{
     border-radius: 50%;
     float: right;
+    height: 82px;
+    width: 85px;
+    background: white;
 }
 #bit-product .bit-product-img p{
     float: right;
@@ -371,8 +374,7 @@ main{
     margin: 15px 0;
 }
 #profile-header .profile-header-info .profile-info-content h1{
-    font-weight: bold;
-    font-size: 36px;
+    font-size: 30px;
     margin: 0px;
 }
 #profile-header .profile-header-info .profile-info-content p{

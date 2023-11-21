@@ -54,13 +54,13 @@
                     </div>
                     <div class="col-5">
                         <div class="bit-product-img">
-                            <img src="{{ asset('/frontend/images/bit-product/laxury.jpeg') }}" alt="">
+                            <img src="{{ asset('/frontend/images/bit-product/lux.png') }}" alt="">
                         </div>
                     </div>
                     <!-- two  -->
                     <div class="col-5">
                         <div class="bit-product-img">
-                            <img src="{{ asset('/frontend/images/bit-product/laxury.jpeg') }}" alt="">
+                            <img src="{{ asset('/frontend/images/bit-product/electronics.png') }}" alt="">
                         </div>
                     </div>                
                     <div class="col-7">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="col-5">
                         <div class="bit-product-img">
-                            <img src="{{ asset('/frontend/images/bit-product/laxury.jpeg') }}" alt="">
+                            <img src="{{ asset('/frontend/images/bit-product/furni.png') }}" alt="">
                         </div>
                     </div>
                     <!-- four  -->

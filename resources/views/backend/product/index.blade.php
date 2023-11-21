@@ -61,7 +61,7 @@
                                                 <td>
                                                     <img width="40" class="img-thumbnail" src="{{asset('frontend/images/product/'.$product->image)}}" alt="">
                                                 </td>
-                                                <td>{{$product->title}}</td>
+                                                <td>{{ Str::limit($product->title, 35)}}</td>
                                                 <td>${{$product->price}}</td>
                                                 <td>${{$product->price_to}}</td>
                                                 <td>{{$product->position}}</td>

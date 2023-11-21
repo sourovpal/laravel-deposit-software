@@ -8,4 +8,5 @@
 <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
 <!-- Meterial UI -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="shortcut icon" href="{{ asset('/frontend/images/logo.png') }}" type="image/x-icon">
 @stack('custom_styles')

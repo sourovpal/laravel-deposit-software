@@ -60,15 +60,15 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-10 mx-auto mb-3 mb-lg-0">
-                    <h4>Products</h4>
+                    <h4>Products History</h4>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-bordered table-sm">
                             <thead>
                                 <tr>
                                     <td width="5%">#</td>
                                     <td width="10%">Image</td>
-                                    <td width="10%">Name</td>
-                                    <td width="15%">Price</td>
+                                    <td width="45%">Title</td>
+                                    <td width="18%">Price</td>
                                     <td width="10%">Status</td>
                                     <td width="10%">Action</td>
                                 </tr>
@@ -83,7 +83,7 @@
                                     <td>${{$order->product->price}} - ${{ $order->product->price_to }}</td>
                                     <td>
                                         @if ($order->status == 0)
-                                            <span class="badge badge-primary">Pending</span>
+                                            <span class="badge badge-danger">Pending</span>
                                         @elseif ($order->status == 1)
                                             <span class="badge badge-success">Complete</span>
                                         @endif
@@ -94,7 +94,7 @@
                                                 @csrf
                                                 <input type="hidden" name="status" value="1">
                                                 <input type="hidden" name="product_id" value="{{ $order->product->id }}">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                                             </form>
                                         @endif
                                     </td>
