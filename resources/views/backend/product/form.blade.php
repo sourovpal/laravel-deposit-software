@@ -14,13 +14,13 @@
                         @error('title')<span class="d-block form-error">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
-                        <label>Product Price</label>
-                        <input type="number" name="price" class="form-control" placeholder="Enter Price" step="any" value="{{old('price', isset($edit)?$edit->price:'')}}">
+                        <label>Product Price From</label>
+                        <input required type="number" name="price" class="form-control" placeholder="Enter Price From" step="any" value="{{old('price', isset($edit)?$edit->price:'')}}">
                         @error('price')<span class="d-block form-error">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
-                        <label>Product Profit</label>
-                        <input type="text" name="profit" class="form-control" placeholder="Enter profit" step="any" value="{{old('profit', isset($edit)?$edit->profit:'')}}">
+                        <label>Product Price To</label>
+                        <input required type="text" name="profit" class="form-control" placeholder="Enter Price To" step="any" value="{{old('profit', isset($edit)?$edit->profit:'')}}">
                         @error('profit')<span class="d-block form-error">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
