@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string('title')->nullable()->unique();
             $table->string('slug')->nullable()->unique();
             $table->float('price', 8, 2)->default(0.00);
-            $table->float('profit', 8, 2)->default(0.00);
+            $table->float('price_to', 8, 2)->default(0.00);
             $table->string('image')->nullable();
             $table->string('status')->default(0);
+            $table->integer('position')->default(0);
             $table->timestamps();
         });
     }

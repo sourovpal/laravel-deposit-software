@@ -7,7 +7,7 @@
         <a href="{{ route('start') }}" class="bottom-navbar-icon start">
           <span class="material-icons">circle</span>
         </a>
-        <a href="{{ route('deposit') }}" class="bottom-navbar-icon">
+        <a href="{{ route('product') }}" class="bottom-navbar-icon">
           <span class="material-icons">history</span>
         </a>
       </div>

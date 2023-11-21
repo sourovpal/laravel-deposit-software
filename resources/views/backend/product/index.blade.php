@@ -47,8 +47,9 @@
                                             <tr>
                                                 <th>Image</th>
                                                 <th>Title</th>
-                                                <th>Price</th>
-                                                <th>Profit</th>
+                                                <th>Price From</th>
+                                                <th>Price To</th>
+                                                <th>Position</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -62,7 +63,8 @@
                                                 </td>
                                                 <td>{{$product->title}}</td>
                                                 <td>${{$product->price}}</td>
-                                                <td>${{$product->profit}}</td>
+                                                <td>${{$product->price_to}}</td>
+                                                <td>{{$product->position}}</td>
                                                 <td>
                                                 @if($product->status == 1)
                                                     <span class="badge badge-success">Publish</span>

@@ -25,8 +25,9 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required|unique:products,title',
             'price' => 'required',
-            'profit' => 'required',
+            'price_to' => 'required',
             'image' => 'required|image|mimes:jpg,jpeg,png,webp',
+            'position' => 'nullable|integer',
         ]);
 
         $data = [];
@@ -41,7 +42,8 @@ class ProductController extends Controller
         $data['title'] = $request->title;
         $data['slug'] = Str::slug($request->title);
         $data['price'] = $request->price;
-        $data['profit'] = $request->profit;
+        $data['price_to'] = $request->price_to;
+        $data['position'] = $request->position;
         $data['status'] = $request->status ? 1 : 0;
         try {
             Product::create($data);
@@ -67,7 +69,8 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required|unique:products,title,' . $edit->id,
             'price' => 'required',
-            'profit' => 'required',
+            'price_to' => 'required',
+            'position' => 'nullable|integer',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp',
         ]);
 
@@ -83,7 +86,8 @@ class ProductController extends Controller
         $data['title'] = $request->title;
         $data['slug'] = Str::slug($request->title);
         $data['price'] = $request->price;
-        $data['profit'] = $request->profit;
+        $data['price_to'] = $request->price_to;
+        $data['position'] = $request->position;
         $data['status'] = $request->status ? 1 : 0;
         try {
             $edit->update($data);

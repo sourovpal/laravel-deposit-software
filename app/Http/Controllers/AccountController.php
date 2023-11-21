@@ -6,6 +6,8 @@ use App\Models\Certificate;
 use App\Models\Contract;
 use App\Models\Deposit;
 use App\Models\Event;
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -38,6 +40,19 @@ class AccountController extends Controller
         return view('start');
     }
 
+    public function product_added(Request $request)
+    {
+        if($request->product_id > 0){
+            Order::create([
+                'user_id' => auth()->guard('web')->id(),
+                'product_id' => auth()->guard('web')->id(),
+                'status' => 1,
+            ]);
+            return back()->withSuccess('Successfully added.');
+        }
+        return back()->withError('Something want wrong!');
+    }
+
     public function profile()
     {
         return view('profile');
@@ -46,6 +61,12 @@ class AccountController extends Controller
     public function deposit()
     {
         return view('deposit');
+    }
+
+    public function product(){
+        $productIds = Order::where('user_id', auth()->guard('web')->id())->pluck('product_id')->toArray();
+        $products = Product::whereIn('id', $productIds)->get();
+        return view('product', compact('products'));
     }
 
     public function depositWithdraw(Request $request)

@@ -29,8 +29,10 @@ Route::middleware(['auth'])->controller('AccountController')->group(function () 
     Route::get('/about', 'about')->name('about');
     Route::get('/profile', 'profile')->name('profile');
     Route::get('/start', 'start')->name('start');
+    Route::post('/start', 'product_added')->name('product_added');
     Route::get('/deposit', 'deposit')->name('deposit');
     Route::post('/deposit', 'depositWithdraw')->name('depositWithdraw');
+    Route::get('/product', 'product')->name('product');
 });
 // Route::controller('Admin\DepositController')->group(function () {
 

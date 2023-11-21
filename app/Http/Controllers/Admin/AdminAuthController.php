@@ -19,8 +19,8 @@ class AdminAuthController extends Controller
         ]);
 
         if(Auth::guard('admin')->attempt($request->only(['email', 'password']))){
-            $url = session()->get('url.intended');
-            return redirect($url??route('dashboard.index'))->withSuccess('Admin Sign in successful.');
+            // $url = session()->get('url.intended');
+            return redirect(route('dashboard.index'))->withSuccess('Admin Sign in successful.');
         }
 
         return back()->withError('Invalid username or password');

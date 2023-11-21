@@ -30,7 +30,7 @@
             <ul class="site-menu main-menu js-clone-nav ml-auto ">
               <li class="active"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
               <li><a href="{{ route('profile') }}" class="nav-link">Profile</a></li>
-              <li><a href="{{ route('home') }}" class="nav-link">Withdraw</a></li>
+              <li><a href="{{ route('deposit') }}" class="nav-link">Withdraw & Deposit</a></li>
               <li><a href="{{ route('home') }}" class="nav-link">Careers</a></li>
               <li><a href="{{ route('about') }}" class="nav-link">About</a></li>
               <li><a href="{{ route('home') }}" class="nav-link">Contact Us</a></li>

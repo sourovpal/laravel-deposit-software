@@ -20,8 +20,8 @@
                     </div>
                     <div class="form-group">
                         <label>Product Price To</label>
-                        <input required type="text" name="profit" class="form-control" placeholder="Enter Price To" step="any" value="{{old('profit', isset($edit)?$edit->profit:'')}}">
-                        @error('profit')<span class="d-block form-error">{{ $message }}</span>@enderror
+                        <input required type="text" name="price_to" class="form-control" placeholder="Enter Price To" step="any" value="{{old('price_to', isset($edit)?$edit->price_to:'')}}">
+                        @error('price_to')<span class="d-block form-error">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
                         <label>Product Image (200 x 200)</label>
@@ -35,6 +35,11 @@
                             <option @if(old('status', isset($edit)?$edit->profit:'') == 0) selected @endif value="0">Draft</option>
                         </select>
                         @error('status')<span class="d-block form-error">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="form-group">
+                        <label>Show Position</label>
+                        <input type="text" name="position" class="form-control" placeholder="Enter position" value="{{old('position', isset($edit)?$edit->position:'')}}">
+                        @error('position')<span class="d-block form-error">{{ $message }}</span>@enderror
                     </div>
                     
                     <button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>
