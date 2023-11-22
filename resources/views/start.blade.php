@@ -220,6 +220,11 @@
                     },
                     success:function(res){
                         console.log(res);
+                        if(!res.status){
+                            if(res.message){
+                                alert(res.message);
+                            }
+                        }
                     }
                 });
             }

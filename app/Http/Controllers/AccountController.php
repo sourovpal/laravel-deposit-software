@@ -45,33 +45,45 @@ class AccountController extends Controller
         if ($request->product_id > 0) {
             $userId = auth()->guard('web')->id();
             $product = Product::findOrFail($request->product_id);
+            $balance = Deposit::where('user_id', $userId)->where('status', 1)->sum('amount');
 
-            $order = Order::updateOrCreate(['product_id' => $request->product_id, 'user_id' => $userId], [
-                'user_id' => $userId,
-                'product_id' => $request->product_id,
-                'status' => $request->status,
-            ]);
+            if ($balance >= $product->price) {
 
-            if (Order::where('product_id', $request->product_id)->where('user_id', $userId)->where('status', 1)->first()) {
-                $profit = (($product->price + $product->price_to) * 0.5) / 100;
-                $data = [
+                $order = Order::updateOrCreate(['product_id' => $request->product_id, 'user_id' => $userId], [
                     'user_id' => $userId,
-                    'provider_id' => 0,
-                    'type' => 'profit',
-                    'amount' => $profit,
-                    'status' => 1,
-                    'deposit_date' => now()->format('Y-m-d'),
-                    'note' => 'Product Added Profit 0.5%',
-                ];
-                Deposit::create($data);
+                    'product_id' => $request->product_id,
+                    'status' => $request->status,
+                ]);
+
+                if (Order::where('product_id', $request->product_id)->where('user_id', $userId)->where('status', 1)->first()) {
+                    $profit = (($product->price + $product->price_to) * 0.5) / 100;
+                    $data = [
+                        'user_id' => $userId,
+                        'provider_id' => 0,
+                        'type' => 'profit',
+                        'amount' => $profit,
+                        'status' => 1,
+                        'deposit_date' => now()->format('Y-m-d'),
+                        'note' => 'Product Added Profit 0.5%',
+                    ];
+                    Deposit::create($data);
+                }
+
+
+                if (!$request->ajax()) {
+                    return back()->withSuccess('Successfully added.');
+                }
+                return response()->json(['status' => true]);
             }
-
-
             if (!$request->ajax()) {
-                return back()->withSuccess('Successfully added.');
+                return back()->withError('Please Deposit Minimum $' . $product->price . ' Then Submit Product');
             }
+            return response()->json(['status' => false, 'message' => 'Please Deposit Minimum $' . $product->price . ' Then Submit Product']);
         }
-        return back()->withError('Something want wrong!');
+        if (!$request->ajax()) {
+            return back()->withError('Something want wrong!');
+        }
+        return response()->json(['status' => false]);
     }
 
     public function profile()

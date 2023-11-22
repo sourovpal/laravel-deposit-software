@@ -23,6 +23,7 @@ class AuthController extends Controller
             'phone' => 'required|max:100',
             'password' => 'required|string|max:100',
             'confirm_password' => 'required_with:password|same:password|max:100',
+            'referral_code' => 'required|string|max:100|exists:users,referral_code',
         ]);
 
         try {

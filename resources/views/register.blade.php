@@ -52,7 +52,7 @@
                     @error('confirm_password') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
                   <div class="form-group">
-                    <input type="text" name="referral_code" placeholder="Referral Code">
+                    <input required type="text" name="referral_code" placeholder="Referral Code">
                     @error('referral_code') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
                   <div class="login-button">
