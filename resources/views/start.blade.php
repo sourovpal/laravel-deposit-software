@@ -124,7 +124,7 @@
 
   @include('inc.bottom-navbar')
 
-  @php
+@php
     $product = null;
     $pending = \App\Models\Order::where('user_id', $user->id)->where('status', 0)->count();
     if($pending <= 0){
@@ -134,9 +134,10 @@
             $product = \App\Models\Product::inRandomOrder()->whereNotIn('id', $productsIds)->where('status', 1)->where('position', 0)->first();
         }
     }
-    
-    @endphp
-    @if($product && $totalOrder <= 40 )
+
+    $total_balance = \App\Models\Deposit::where('user_id', $user->id)->where('status', 1)->sum('amount');
+@endphp
+    @if($product && $totalOrder <= 40 && $total_balance > 50)
     <div class="modal" tabindex="-1" id="productModal">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -177,6 +178,23 @@
           </div>            
           <div class="modal-footer">
             <a href="{{route('product')}}" class="btn btn-secondary">Go to Porduct List</a>            
+          </div>
+        </div>
+      </div>
+    </div>
+    @endif
+    
+    
+    @if($total_balance < 50)
+    <div class="modal" tabindex="-1" id="productModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Can't Start Submiting Data Until The Balance Is 50</span></h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          </div>            
+          <div class="modal-footer">
+            <a href="{{route('deposit')}}" class="btn btn-secondary">Go To Deposit</a>            
           </div>
         </div>
       </div>

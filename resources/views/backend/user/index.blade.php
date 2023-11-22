@@ -62,7 +62,9 @@
                                                     <span class="d-block">{{$user->name}}</span>
                                                     <span class="d-block">{{$user->email}}</span>
                                                 </td>
-                                                <td>01919852044</td>
+                                                <td>
+                                                    {{$user->phone}}
+                                                </td>
                                                 <td>
                                                     @if($user->referral_id)
                                                     <a  href="" class="badge badge-success">View Referral</a>
