@@ -41,8 +41,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="">Email</label>
-                                    <input required class="form-control" type="text" name="" placeholder="email"  value="{{ old('email', $edit->email) }}" readonly>
+                                    <input required class="form-control" type="text" name="email" placeholder="Email"  value="{{ old('email', $edit->email) }}" >
                                     @error('email') <span class="d-block form-error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="">Phone</label>
+                                    <input required class="form-control" type="text" name="phone" placeholder="Phone"  value="{{ old('phone', $edit->phone) }}" >
+                                    @error('phone') <span class="d-block form-error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="">Password</label>
+                                    <input class="form-control" type="text" name="password" placeholder="Password"  value="{{ old('password') }}" >
+                                    @error('password') <span class="d-block form-error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="">Status</label>
@@ -56,6 +66,49 @@
                                 <div class="form-group">
                                     <label class="form-label" for="">Amount</label>
                                     <input required class="form-control" type="number" step="any" name="amount" placeholder="Amount"  value="{{ old('amount', $edit->amount) }}">
+                                    @error('amount') <span class="d-block form-error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="">Level</label>
+                                    <select required class="form-control" name="level" id="">
+                                        <option value="">Select Level</option>
+                                        <option @if(old('level', $edit->level) == 1) selected @endif value="1">Bronze</option>
+                                        <option @if(old('level', $edit->level) == 2) selected @endif value="2">Silver</option>
+                                        <option @if(old('level', $edit->level) == 3) selected @endif value="3">Gold</option>
+                                        <option @if(old('level', $edit->level) == 4) selected @endif value="4">Platinum</option>
+                                    </select>
+                                    @error('level') <span class="d-block form-error">{{ $message }}</span> @enderror
+                                </div>
+                                @csrf
+                                <button type="submit" class="btn btn-purple waves-effect waves-light">Submit</button>
+                            </form>
+                        </div>
+                        <!-- card-body -->
+                    </div>
+                    <!-- card -->
+                </div>
+                <!-- col-->
+
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-header"><h3 class="card-title">User Deposit</h3></div>
+                        <div class="card-body">
+                            
+                            <form method="post" enctype="multipart/form-data" action="{{ route('dashboard.user.deposit') }}">
+                                <div class="form-group">
+                                    <label class="form-label" for="">User Name</label>
+                                    <input required class="form-control" type="text" name="name" readonly placeholder="Name"  value="{{ old('name', $edit->name) }}">
+                                    <input type="hidden" value="{{ $edit->id }}" name="id">
+                                    @error('name') <span class="d-block form-error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="">Deposit Amount</label>
+                                    <input required class="form-control" type="number" step="any" name="amount" placeholder="Amount"  value="{{ old('amount') }}">
+                                    @error('amount') <span class="d-block form-error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="">Note</label>
+                                    <input required class="form-control" type="text" name="note" placeholder="Note"  value="{{ old('amount') }}">
                                     @error('amount') <span class="d-block form-error">{{ $message }}</span> @enderror
                                 </div>
                                 @csrf

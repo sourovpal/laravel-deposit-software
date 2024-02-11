@@ -1,85 +1,67 @@
 @extends('app')
 
 @section('content')
-  <main id="login-bg">
+  <main id="register-bg">
     <!-- Login Header -->
     <div class="login-header">
-      <div class="login-header-logo">
-        <img src="{{ asset('/frontend/logo.png') }}" alt="">
-      </div>
-      <div class="login-header-text">
-        <h1>Hybrid Theory</h1>
+      <div class="login-header-text mt-2">
+        <img src="{{ asset('frontend/images/logo.png') }}" height="80" alt="">
       </div>
     </div>
-
-    <!-- Brand Slider -->
-    <section id="login-brand-slider" class="mb-3">
-      <div class="container-fluid">
-        @include('inc.slider')
-      </div>
-    </section>
 
     <!-- Login Form -->
     <section id="login-form">
         <div class="container">
+          <h1 class="text-center text-light">Create Account</h1>
+          <p class="text-center">Setup your Freelancer Account now</p>
           <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
               <div class="login-content">
-                <div class="register-button">
-                  <a href="{{ route('login') }}">Login</a>
-                </div>
                 <form action="{{ url()->full() }}" method="post">
                   @csrf
-                  <div class="form-group">
-                    <input required type="text" name="name" placeholder="Name" value="{{ old('name') }}">
+                  <div class="form-group inputIcon">
+                    <input required type="text" name="name" placeholder="" value="{{ old('name') }}">
+                    <i class="fa fa-user"></i>
                     @error('name') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
-                  <div class="form-group">
-                    <input required type="text" name="email" placeholder="Email" value="{{ old('email') }}">
+                  <div class="form-group inputIcon">
+                    <input required type="text" name="email" value="{{ old('email') }}">
+                    <i class="fa fa-envelope"></i>
                     @error('email') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
-                  <div class="form-group">
-                    <input required type="number" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
+                  <div class="form-group inputIcon">
+                    <input required type="text" name="phone" id="phone" value="{{ old('phone') }}">
                     @error('phone') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
-                  <div class="form-group">
-                    <input required type="password" name="password" placeholder="Password">
+                  <div class="form-group inputIcon">
+                    <input required type="password" name="password">
+                    <i class="fa fa-lock"></i>
                     @error('password') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
-                  <div class="form-group">
-                    <input required type="password" name="confirm_password" placeholder="Confirm Password">
+                  <div class="form-group inputIcon">
+                    <input required type="password" name="confirm_password">
+                    <i class="fa fa-lock"></i>
                     @error('confirm_password') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
-                  <div class="form-group">
-                    <input required type="text" name="referral_code" placeholder="Referral Code">
+                  <div class="form-group inputIcon">
+                    <input required type="text" name="referral_code">
+                    <i class="fa fa-users"></i>
                     @error('referral_code') <span class="d-block form-error">{{ $message }}</span> @enderror
                   </div>
                   <div class="login-button">
-                    <button>Register</button>
+                    <button>Sign Up</button>
                   </div>
                 </form>
-                <a href="#" class="login-forget">Forget Password?</a>
+                <div class="text-center">
+                  <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
+                </div>
               </div>
             </div>
             <div class="col-md-3"></div>
           </div>
         </div>
       </section>
-
-    <!-- Login Brand -->
-    <section id="login-brand">
-      <div class="container-fluid">
-        @include('inc.brands')
-      </div>
-    </section>
-
-    <!-- Login Footer -->
-    <section id="login-footer">
-        <div class="container">
-          <p>&copy; GA Agency 2023. All Rights Reserved. Privacy Policy.</p>
-        </div>
-    </section>
   </main>
 
 @endsection

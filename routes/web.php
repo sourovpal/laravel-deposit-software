@@ -21,12 +21,17 @@ Route::controller('AuthController')->group(function () {
     Route::post('/login', 'loginSubmit')->name('login.submit');
 
     Route::get('/logout', 'logout')->name('logout');
+
+    Route::get('/password-forgot', 'showForgotForm')->name('forgot.password.form');
+    Route::post('/password-forgot', 'showResetLink')->name('forgot.password.link');
+    Route::post('/password-reset/{token}', 'showResetForm')->name('reset.password.form');
 });
 
 Route::middleware(['auth'])->controller('AccountController')->group(function () {
 
     Route::get('/', 'home')->name('home');
     Route::get('/about', 'about')->name('about');
+    Route::get('/privacy-policy', 'privacy')->name('privacy');
     Route::get('/profile', 'profile')->name('profile');
     Route::get('/start', 'start')->name('start');
     Route::post('/start', 'product_added')->name('product_added');
@@ -73,7 +78,15 @@ Route::prefix('/dashboard')->as('dashboard.')->group(function () {
             Route::get('/show/{id}', 'show')->name('show');
             Route::get('/edit/{id}', 'edit')->name('edit');
             Route::post('/edit/{id}', 'update')->name('update');
-            Route::get('/destroy', 'destroy')->name('destroy');
+            Route::get('/destroy/{id}', 'destroy')->name('destroy');
+            Route::post('/deposit', 'deposit')->name('deposit');
+            Route::get('/reset/{id}', 'reset')->name('reset');
+            Route::get('/products/{id}', 'products')->name('products');
+            Route::get('/add-product/{id}/{product_id}', 'add_product')->name('add_product');
+
+            // Create User
+            Route::get('/add-user', 'addUser')->name('add.user');
+            Route::post('/add-user', 'addUserCreate')->name('create.user');
         });
 
         Route::controller('Admin\ProductController')->as('product.')->prefix('products')->group(function () {
@@ -146,6 +159,13 @@ Route::prefix('/dashboard')->as('dashboard.')->group(function () {
 
         // CERTIFICATE ROUTE 
         Route::controller('Admin\CertificateController')->as('certificate.')->prefix('certificate')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/edit/{id}', 'update')->name('update');
+        });
+
+        // SETTING ROUTE 
+        Route::controller('Admin\SettingController')->as('setting.')->prefix('setting')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/edit/{id}', 'edit')->name('edit');
             Route::post('/edit/{id}', 'update')->name('update');

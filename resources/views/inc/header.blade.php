@@ -14,7 +14,6 @@
           <div class="site-logo">
             <a href="{{ url('/') }}" class="font-weight-bold text-white">
               <img src="{{ asset('/frontend/images/logo.png') }}" alt="">
-              Hybrid Theory
             </a>
           </div>
         </div>
@@ -33,7 +32,7 @@
               <li><a href="{{ route('deposit') }}" class="nav-link">Withdraw & Deposit</a></li>
               <li><a href="{{ route('home') }}" class="nav-link">Careers</a></li>
               <li><a href="{{ route('about') }}" class="nav-link">About</a></li>
-              <li><a href="{{ route('home') }}" class="nav-link">Contact Us</a></li>
+              <li><a href="{{ route('privacy') }}" class="nav-link">Privacy Policy</a></li>
               <li><a href="{{ route('logout') }}" class="nav-link">Logout</a></li>
             </ul>
           </nav>

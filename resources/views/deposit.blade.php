@@ -64,10 +64,10 @@
                 <li>
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <a href="#">Tron 20</a>
+                            <a href="#">TRON 20</a>
                         </div>
-                        <div id="tron_val">
-                            TPnpCi7R97ri646irrv5xxcYnp59BXhonT
+                        <div>
+                            <span id="tron_val">{{ $setting->tron20 }}</span>
                         </div>
                         <div class="align-items-center">
                             <button id="tron_btn" class="btn btn-sm btn-primary">
@@ -82,8 +82,8 @@
                         <div>
                             <a href="#">ERC 20</a>
                         </div>
-                        <div id="erc_val">
-                            TPnpCi7R97ri646irrv5xxcYnp59BXhonT
+                        <div>
+                            <span id="erc_val">{{ $setting->erc20 }}</span>
                         </div>
                         <div>
                             <button id="erc_btn" class="btn btn-sm btn-primary">

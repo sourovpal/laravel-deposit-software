@@ -107,7 +107,7 @@
                             @php
                                 $totalOrder = \App\Models\Order::where('user_id', $user->id)->where('status', 1)->count();
                             @endphp
-                            <p>{{ $totalOrder }}/40</p>
+                            <p>{{ $totalOrder }}/30</p>
                         </div>
                     </div>                
                     <div class="col-7">
@@ -126,18 +126,20 @@
 
 @php
     $product = null;
+    $assignIds = [];
     $pending = \App\Models\Order::where('user_id', $user->id)->where('status', 0)->count();
     if($pending <= 0){
+        $assignIds = \App\Models\AssignProduct::where('user_id', $user->id)->pluck('product_id')->toArray();
         $productsIds = \App\Models\Order::where('user_id', $user->id)->pluck('product_id')->toArray();
-        $product = \App\Models\Product::where('position', $totalOrder+1)->whereNotIn('id', $productsIds)->where('status', 1)->first();
+        $product = \App\Models\Product::where('position', $totalOrder+1)->whereNotIn('id', $productsIds)->whereIn('id', $assignIds)->where('status', 1)->first();
         if(!$product){
-            $product = \App\Models\Product::inRandomOrder()->whereNotIn('id', $productsIds)->where('status', 1)->where('position', 0)->first();
+            $product = \App\Models\Product::inRandomOrder()->whereNotIn('id', $productsIds)->whereIn('id', $assignIds)->where('status', 1)->where('position', 0)->first();
         }
     }
 
     $total_balance = \App\Models\Deposit::where('user_id', $user->id)->where('status', 1)->sum('amount');
 @endphp
-    @if($product && $totalOrder <= 40 && $total_balance > 50)
+    @if($product && $totalOrder <= 30 && $total_balance > 50)
     <div class="modal" tabindex="-1" id="productModal">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -208,7 +210,11 @@
 <script>
     (function(){
         var product_id = '{{optional($product)->id??0}}';
+        var total_products = '{{count($assignIds)}}';
         $('#showPorduct').click(function(){
+            if(total_products <= 0){
+                return alert('Product not assigned to you.');
+            }
             $('#productModal').modal('show');
             if(product_id > 0){
                 $.ajax({

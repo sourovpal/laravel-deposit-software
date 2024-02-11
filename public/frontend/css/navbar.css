@@ -1,6 +1,9 @@
-@import url('https://fonts.cdnfonts.com/css/gosha-sans');          
+@font-face {
+  font-family: markpro;
+  src: url('/fonts/markpro.ttf');
+}   
 body {
-  font-family: 'Gosha Sans', sans-serif;
+  font-family: "Mark Pro";
   background-color: #fff;
 }
 
@@ -47,6 +50,35 @@ h6,
   font-family: 'Gosha Sans', sans-serif;
 }
 
+@media (max-width: 550px){
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    font-size: 18px !important;
+  }
+  p,
+  a,
+  span,
+  ul,
+  li,
+  td,
+  tr,
+  table,
+  button,
+  div{
+    font-size: 14px !important;
+  }
+}
+
 a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
@@ -65,7 +97,7 @@ a:hover {
   top: 0;
   width: 100%;
   padding: 1rem;
-  background: #212529;
+  background: #353535;
 }
 
 @media (max-width: 991.98px) {
@@ -94,7 +126,6 @@ a:hover {
 }
 .site-navbar .site-logo a img{
   height: 50px;
-  width: 50px;
 }
 
 @media (max-width: 991.98px) {
@@ -111,7 +142,6 @@ a:hover {
 @media (max-width: 450px) {
   .site-navbar .site-logo a img{
     height: 40px;
-    width: 40px;
   }
 }
 

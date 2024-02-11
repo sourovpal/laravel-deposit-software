@@ -6,6 +6,9 @@ use App\Models\Deposit;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use DB; 
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -42,10 +45,10 @@ class AuthController extends Controller
             $deposit = Deposit::create([
                 'user_id' => $user->id,
                 'type' => 'deposit',
-                'amount' => 15,
+                'amount' => 20,
                 'status' => 1,
                 'deposit_date' => now()->format('Y-m-d'),
-                'note' => 'Created new account so you got $15 gift',
+                'note' => 'Created new account so you got $20 gift',
             ]);
             Auth::guard('web')->login($user);
 
@@ -82,4 +85,33 @@ class AuthController extends Controller
         Auth::guard('web')->logout();
         return redirect()->route('login')->withSuccess('Successfully Logout.');
     }
+
+    // Forget Password 
+    public function showForgotForm(){
+        return view('forgot');
+    }
+    public function showResetLink(Request $request){
+        $request->validate([
+            'email' => 'required|email|max:100|exists:users,email',
+        ]);
+        $token = Str::random(64);
+        DB::table('password_resets')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => Carbon::now(),
+        ]);
+
+        
+        $action_link = route('reset.password.form', ['token'=>$token,'email'=>$request->email]);
+        $body = "We are received a request to reset the password for <b>Your app Name </b> account associated with ".$request->email.". You can reset your password by clicking the link below";
+        
+        \Mail::send('email-forgot',['action_link'=>$action_link,'body'=>$body], function($message) use ($request){
+            $message->from('noreply@example.com','Fivetran');
+            $message->to($request->email,'Your name')
+                    ->subject('Reset Password');
+      });
+
+      return back()->withSuccess('We have e-mailed your password reset link!');
+    }
+
 }

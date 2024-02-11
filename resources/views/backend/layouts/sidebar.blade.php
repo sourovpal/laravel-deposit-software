@@ -106,6 +106,14 @@
                         <span> Certificate </span>
                     </a>
                 </li>
+                
+                
+                <li>
+                    <a href="{{ route('dashboard.setting.index') }}" class="waves-effect">
+                        <i class="mdi mdi-settings"></i>
+                        <span> Setting </span>
+                    </a>
+                </li>
 
             </ul>
 

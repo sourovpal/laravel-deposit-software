@@ -34,7 +34,10 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">View List</h3>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h3 class="card-title">View List</h3>
+                                <a href="{{ route('dashboard.user.add.user') }}" class="btn btn-info btn-sm">Create User</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -42,13 +45,13 @@
                                     <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th width="10%">Avatar</th>
-                                                <th width="30%">User</th>
+                                                <th width="5%">Level</th>
+                                                <th width="25%">User</th>
                                                 <th width="15%">Phone</th>
                                                 <th width="10%">Referral User</th>
                                                 <th width="10%">Referral Code</th>
                                                 <th>Status</th>
-                                                <th width="10%">Action</th>
+                                                <th width="20%">Action</th>
                                             </tr>
                                         </thead>
 
@@ -56,11 +59,19 @@
                                         @foreach ($users as $user)
                                             <tr>
                                                 <td>
-                                                    <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
+                                                    <img width="40" class="img-thumbnail" src="{{asset('frontend/images/level/'.$user->level.'.jpeg')}}" alt="">
                                                 </td>
                                                 <td>
-                                                    <span class="d-block">{{$user->name}}</span>
-                                                    <span class="d-block">{{$user->email}}</span>
+                                                    <div class="d-flex justify-content-start align-items-center">
+                                                        <div class="mr-3">
+                                                            <img width="40" class="img-thumbnail" src="https://i.pravatar.cc/200/200?{{ rand() }}" alt="">
+                                                        </div>
+                                                        <div>
+                                                            <span class="d-block">{{$user->name}}</span>
+                                                            <span class="d-block">{{$user->email}}</span>
+                                                        </div>
+                                                    </div>
+
                                                 </td>
                                                 <td>
                                                     {{$user->phone}}
@@ -81,8 +92,10 @@
                                                     @endif
                                                 </td>
                                                 <td>
+                                                    <a class="btn btn-sm btn-primary" href="{{route('dashboard.user.products', $user->id)}}">Products</a>
                                                     <a class="btn btn-sm btn-warning" href="{{route('dashboard.user.edit', $user->id)}}">Edit</a>
-                                                    <a class="btn btn-sm btn-danger" href="">Delete</a>
+                                                    <a class="btn btn-sm btn-danger" href="{{route('dashboard.user.destroy', $user->id)}}">Delete</a>
+                                                    <a class="btn btn-sm btn-info" onclick="return confirm('Are your sure? Reset All Data.');" href="{{route('dashboard.user.reset', $user->id)}}">Reset</a>
                                                 </td>
                                             </tr>
                                         @endforeach

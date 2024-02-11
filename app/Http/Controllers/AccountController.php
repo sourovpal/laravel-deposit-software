@@ -35,6 +35,11 @@ class AccountController extends Controller
         return view('about');
     }
 
+    public function privacy()
+    {
+        return view('privacy-policy');
+    }
+
     public function start()
     {
         return view('start');
@@ -43,6 +48,7 @@ class AccountController extends Controller
     public function product_added(Request $request)
     {
         if ($request->product_id > 0) {
+            $user = auth()->guard('web')->user();
             $userId = auth()->guard('web')->id();
             $product = Product::findOrFail($request->product_id);
             $balance = Deposit::where('user_id', $userId)->where('status', 1)->sum('amount');
@@ -56,7 +62,7 @@ class AccountController extends Controller
                 ]);
 
                 if (Order::where('product_id', $request->product_id)->where('user_id', $userId)->where('status', 1)->first()) {
-                    $profit = (($product->price + $product->price_to) * 0.5) / 100;
+                    $profit = (($product->price + $product->price_to) * $user->percent_profit) / 100;
                     $data = [
                         'user_id' => $userId,
                         'provider_id' => 0,
@@ -64,7 +70,7 @@ class AccountController extends Controller
                         'amount' => $profit,
                         'status' => 1,
                         'deposit_date' => now()->format('Y-m-d'),
-                        'note' => 'Product Added Profit 0.5%',
+                        'note' => 'Product Added Profit ' . $user->percent_profit . '%',
                     ];
                     Deposit::create($data);
                 }
@@ -118,8 +124,8 @@ class AccountController extends Controller
         if ($request->transition_type == 1) {
             $amount = 0 - $request->amount;
             $order = Order::where('user_id', $userId)->count();
-            if ($order < 40) {
-                return back()->withInput()->withError('Please Complete 40 product submit then withdrawal.');
+            if ($order < 30) {
+                return back()->withInput()->withError('Please Complete 30 product submit then withdrawal.');
             }
         } else {
             $amount = $request->amount;

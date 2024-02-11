@@ -13,7 +13,7 @@
         padding:6px 0px;
       }
     </style>
-    <title>Hybrid Theory</title>
+    <title>Icarus</title>
 </head>
 
 <body>
